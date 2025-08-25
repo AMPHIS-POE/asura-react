@@ -10,7 +10,6 @@ import PromptModal from '../../../../components/Modal/PromptModal';
 import ImageModal from '../../../../components/Modal/ImageModal';
 import Breadcrumbs from '../../../../components/BreadCrumbs/BreadCrumbs';
 
-
 const Poe2ActGuide = ({ lang }) => {
     const { showLoader, hideLoader } = useLoading();
     const [currentAct, setCurrentAct] = useState('act1');
@@ -88,7 +87,8 @@ const Poe2ActGuide = ({ lang }) => {
     useEffect(() => {
         const fetchUiIcons = async () => {
             try {
-                const response = await fetch('/wp-json/asura/v1/ui-icons');
+                const apiUrl = import.meta.env.VITE_API_URL;
+                const response = await fetch(`${apiUrl}/wp-json/asura/v1/ui-icons`);
                 if (!response.ok) throw new Error('UI Icons fetch failed');
                 const data = await response.json();
                 setUiIcons(data);
@@ -201,9 +201,12 @@ const Poe2ActGuide = ({ lang }) => {
             showLoader();
             setError(null);
             try {
-                const guideStepsUrl = `/wp-json/wp/v2/guide_step?lang=${lang}&acf_format=standard&per_page=100&_embed`;
+                const apiUrl = import.meta.env.VITE_API_URL;
+
+                const guideStepsUrl = `${apiUrl}/wp-json/wp/v2/guide_step?lang=${lang}&acf_format=standard&per_page=100&_embed`;
                 const allStepsFromWP = await fetchAllPaginatedData(guideStepsUrl);
-                const glossaryResponse = await fetch(`/wp-json/wp/v2/glossary?lang=${lang}&per_page=100`, { signal });
+                
+                const glossaryResponse = await fetch(`${apiUrl}/wp-json/wp/v2/glossary?lang=${lang}&per_page=100`, { signal });
                 if (!glossaryResponse.ok) throw new Error('용어 설명 데이터 로딩 실패');
                 const glossaryItems = await glossaryResponse.json();
                 const glossaryMap = glossaryItems.reduce((acc, item) => {
@@ -222,7 +225,7 @@ const Poe2ActGuide = ({ lang }) => {
                 let enrichedItemsMap = new Map();
                 if (allItemIds.size > 0) {
                     const itemIdsArray = Array.from(allItemIds);
-                    const itemsResponse = await fetch(`/wp-json/wp/v2/item?lang=${lang}&include=${itemIdsArray.join(',')}&per_page=100&_embed`, { signal });
+                    const itemsResponse = await fetch(`${apiUrl}/wp-json/wp/v2/item?lang=${lang}&include=${itemIdsArray.join(',')}&per_page=100&_embed`, { signal });
                     if (!itemsResponse.ok) throw new Error('아이템 상세 정보 로딩 실패');
                     const enrichedItems = await itemsResponse.json();
                     enrichedItems.forEach(item => {
