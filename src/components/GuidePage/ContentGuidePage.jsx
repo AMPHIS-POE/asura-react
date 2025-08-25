@@ -58,7 +58,8 @@ const ContentGuidePage = ({ lang }) => {
             const queryParams = new URLSearchParams(location.search);
             const postType = queryParams.get('type') || 'content_guide';
             try {
-                const response = await fetch(`/wp-json/wp/v2/${postType}?slug=${slug}&lang=${lang}&_embed`);
+                const apiUrl = import.meta.env.VITE_API_URL;
+                const response = await fetch(`${apiUrl}/wp-json/wp/v2/glossary?lang=${lang}&per_page=100`);
                 if (!response.ok) {
                     const errorData = await response.json();
                     throw new Error(errorData.message || 'Failed to fetch the guide.');

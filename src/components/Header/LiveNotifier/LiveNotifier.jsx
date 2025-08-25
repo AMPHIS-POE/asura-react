@@ -9,7 +9,7 @@ const LiveNotifier = () => {
         const fetchLiveStreamers = async () => {
             try {
                 const apiUrl = import.meta.env.VITE_API_URL;
-                const response = await fetch('${apiUrl}/wp-json/asura/v1/live-streamers');
+                const response = await fetch(`${apiUrl}/wp-json/asura/v1/live-streamers`); 
                 const data = await response.json();
                 if (data && data.length > 0) {
                     setStreamerData(data[0]);
@@ -20,12 +20,12 @@ const LiveNotifier = () => {
         };
 
         fetchLiveStreamers();
-        const interval = setInterval(fetchLiveStreamers, 300000); 
+        const interval = setInterval(fetchLiveStreamers, 300000);
         return () => clearInterval(interval);
     }, []);
 
     if (!streamerData) {
-        return null; 
+        return null;
     }
 
     const isLive = streamerData.status === 'online';
