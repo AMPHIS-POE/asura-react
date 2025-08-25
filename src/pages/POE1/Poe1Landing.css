@@ -1,0 +1,39 @@
+.poe1-navigation-bar {
+  padding: 5px 0;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
+  background-color: var(--color-background-black);
+}
+
+.tabs {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing-unit) * 5);
+}
+
+#poe1-sub-content-container {
+  text-align: center;
+}
+
+.poe1-navigation-bar .tab-link,
+.poe1-navigation-bar .dropdown-button {
+  background: none;
+  border: none;
+  padding: 8px 10px;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: var(--font-ui);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-text-base);
+  text-shadow: none;
+}
+
+.poe1-navigation-bar .tab-link:hover,
+.poe1-navigation-bar .tab-link.active,
+.poe1-navigation-bar .dropdown-button:hover,
+.poe1-navigation-bar .dropdown-button.active {
+  color: var(--color-accent-poe1);
+  font-weight: 900;
+}

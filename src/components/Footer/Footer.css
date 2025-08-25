@@ -1,0 +1,39 @@
+.custom-site-footer {
+  background-color: var(--color-background-footer);
+  border-top: 1px solid var(--color-border-primary);
+  padding: 20px;
+  margin-top: 50px;
+  color: var(--color-text-dark);
+  flex-shrink: 0;
+}
+
+.footer-container {
+  max-width: var(--width-container);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-disclaimer {
+  margin-bottom: 15px;
+  font-size: 0.8em;
+  color: var(--color-text-darker);
+}
+
+.footer-social-icons a {
+  display: inline-block;
+  margin: 0 10px;
+  vertical-align: middle;
+  color: var(--color-text-dark);
+  font-size: 24px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-social-icons a:hover {
+  color: var(--color-text-bright);
+  transform: scale(1.1);
+}
+
+.footer-copyright {
+  font-size: 0.8em;
+  margin-top: 15px;
+}

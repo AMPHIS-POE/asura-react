@@ -1,0 +1,298 @@
+/* ============================================= */
+/* ===== General Modal Styles ================== */
+/* ============================================= */
+
+.modal__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.modal__content {
+    position: relative;
+    background: var(--color-background-surface);
+    padding: 1.5rem;
+    padding-top: 3.5rem;
+    border-radius: var(--radius-large);
+    border: 1px solid var(--color-border-primary);
+    width: 500px;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.modal__close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    font-size: 2.5rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    z-index: 10;
+}
+
+.modal__close-btn:hover {
+    color: var(--color-text-bright);
+}
+
+.modal__decorator-bar {
+    position: absolute;
+    top: 3rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    height: 3px;
+    background-color: var(--color-accent-poe2);
+}
+
+.modal__message {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    color: var(--color-text-bright);
+    white-space: pre-wrap;
+}
+
+.modal__input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1.5rem;
+    background-color: var(--color-background-base);
+    border: 1px solid var(--color-border-secondary);
+    border-radius: var(--radius-small);
+    color: var(--color-text-bright);
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+}
+
+.modal__input:focus {
+    outline: none;
+    border-color: var(--color-accent-poe2);
+    box-shadow: 0 0 8px rgba(255, 183, 0, 0.5);
+}
+
+.modal__footer {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.modal__btn {
+    padding: 0.6rem 1.5rem;
+    border-radius: var(--radius-small);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.modal__btn--secondary {
+    background-color: #3a3a44;
+    color: var(--color-text-bright);
+    border: 1px solid var(--color-border-secondary);
+}
+
+.modal__btn--secondary:hover {
+    background-color: #4a4a54;
+}
+
+.modal__btn--primary {
+    background-color: var(--color-accent-poe2);
+    border: 1px solid var(--color-accent-poe2);
+    color: #1a1a1f;
+}
+
+.modal__btn--primary:hover {
+    filter: brightness(1.1);
+}
+
+
+/* ============================================= */
+/* ===== Image Modal Styles ==================== */
+/* ============================================= */
+
+.image-modal__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    cursor: zoom-out;
+}
+
+.image-modal__content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+.image-modal__content img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    border: 2px solid var(--color-border-primary);
+    border-radius: var(--radius-small);
+}
+
+.image-modal__close-btn {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 3rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.image-modal__close-btn:hover {
+    color: var(--color-text-muted);
+}
+
+
+/* ============================================= */
+/* ===== Records Modal Specific Styles ========= */
+/* ============================================= */
+
+.modal__content.modal--records {
+    width: 800px;
+    max-width: 95vw;
+}
+
+.record-board-header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1rem;
+    position: relative;
+    margin-top: 2rem;
+}
+
+.record-board-header h2 {
+    width: 100%;
+    text-align: center;
+    color: var(--color-accent-poe2);
+    margin: 0;
+    padding: 0;
+}
+
+.modal--records table {
+    width: 100%;
+    margin-top: 1.5rem;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.modal--records th,
+.modal--records td {
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.modal--records th {
+    color: var(--color-text-muted);
+    font-weight: bold;
+    text-align: center;
+}
+
+.modal--records tr:last-child td {
+    border-bottom: none;
+}
+
+.modal--records th:first-child,
+.modal--records td:first-child {
+    width: 10%;
+}
+
+.modal--records th:nth-child(2),
+.modal--records td:nth-child(2) {
+    width: 25%;
+}
+
+.modal--records th:nth-child(3) {
+    width: 50%;
+}
+
+.modal--records td:nth-child(3) {
+    width: 50%;
+    text-align: left;
+    padding-left: 1rem;
+}
+
+.modal--records th:last-child,
+.modal--records td:last-child {
+    width: 15%;
+}
+
+.modal--records tr.is-first-place td {
+    color: #D94C83;
+    font-weight: bold;
+}
+
+.delete-all-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    background-color: #8c1c1c;
+    color: white;
+    border: 1px solid #a82424;
+    border-radius: var(--radius-small);
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.delete-all-btn:hover {
+    background-color: #a82424;
+}
+
+.delete-record-btn {
+    background-color: #8c1c1c;
+    color: white;
+    border: 1px solid #a82424;
+    border-radius: var(--radius-small);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    line-height: 32px;
+}
+
+.delete-record-btn:hover {
+    background-color: #a82424;
+    color: white;
+}
+
+.modal--records td:nth-child(2) {
+    text-align: center;
+}

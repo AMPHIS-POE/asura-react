@@ -1,0 +1,90 @@
+#asura-main-landing {
+  padding-top: 0px;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(var(--spacing-unit) * 6);
+}
+
+.left-column {
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: calc(var(--spacing-unit) * 6);
+}
+
+.content-box {
+  background-color: var(--color-background-surface);
+  border: 1px solid var(--color-border-secondary);
+  border-radius: var(--radius-medium);
+  padding: calc(var(--spacing-unit) * 8);
+  color: var(--color-text-bright);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.info-box h3,
+.cat-box h3 {
+  font-size: 1.5em;
+  margin-top: 0;
+  margin-bottom: calc(var(--spacing-unit) * 4);
+  text-align: left;
+}
+
+.info-box p,
+.cat-box p {
+  font-size: 1em;
+  color: var(--color-text-base);
+  line-height: 1.6;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.cat-box img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-medium);
+  margin-bottom: calc(var(--spacing-unit) * 5);
+}
+
+.selection-box {
+  align-items: center;
+  text-align: center;
+}
+
+.selection-box h2 {
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: calc(var(--spacing-unit) * 5);
+  text-align: center;
+}
+
+.game-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: calc(var(--spacing-unit) * 10);
+  margin-top: calc(var(--spacing-unit) * 2.5);
+}
+
+.game-link {
+  display: block;
+  text-decoration: none;
+  transition: transform 0.3s ease-in-out;
+}
+
+.game-link img {
+  max-width: 240px;
+  height: auto;
+  display: block;
+  transition: all 0.3s ease-in-out;
+  margin: 0 auto;
+}
+
+.game-link:hover img {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 15px var(--color-primary-dark));
+}

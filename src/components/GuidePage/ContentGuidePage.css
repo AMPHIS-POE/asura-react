@@ -1,0 +1,194 @@
+.guide-detail-container {
+    max-width: var(--width-container);
+    margin: 2rem auto;
+    padding: 1.5rem;
+    position: relative;
+    border-radius: var(--radius-medium);
+}
+
+.guide-detail-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-color: rgba(10, 10, 12, 0.85);
+    backdrop-filter: blur(5px);
+    border-radius: inherit;
+}
+
+.guide-detail-container .breadcrumbs-nav {
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.guide-main-layout {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.guide-sidebar {
+    flex: 0 0 300px;
+    position: sticky;
+    top: 20px;
+}
+
+.guide-sidebar .author-card {
+    margin-bottom: 1.5rem;
+}
+
+.table-of-contents {
+    background-color: #1a1a1f;
+    padding: 1.5rem;
+    border-radius: var(--radius-medium);
+}
+
+.table-of-contents h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border-subtle);
+    font-family: var(--font-heading);
+    color: var(--color-text-bright);
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.table-of-contents ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: toc-counter;
+}
+
+.table-of-contents li:not(:last-child) {
+    border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.table-of-contents li a {
+    text-decoration: none;
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    transition: color 0.2s ease-in-out;
+    display: block;
+    padding: 0.75rem 0.5rem;
+}
+
+.table-of-contents li a:hover {
+    color: var(--color-text-bright);
+}
+
+.table-of-contents li a::before {
+    counter-increment: toc-counter;
+    content: counter(toc-counter) ". ";
+    font-weight: bold;
+    margin-right: 0.5rem;
+    color: var(--color-text-muted);
+}
+
+.table-of-contents li.active a,
+.table-of-contents li.active a::before {
+    color: var(--color-accent-poe2);
+    font-weight: bold;
+}
+
+.guide-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.guide-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.guide-title {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    margin: 0;
+    line-height: 1.2;
+    color: var(--color-accent-poe2);
+}
+
+.guide-header .guide-meta-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 1rem;
+    gap: 1rem;
+}
+
+.guide-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.guide-tag {
+    color: #000000;
+    padding: 0.35rem 1.25rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.guide-meta {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+}
+
+.guide-content > * {
+    margin: 0;
+}
+
+.guide-content > * + * {
+    margin-top: 1.2rem;
+}
+
+.guide-content > h2,
+.guide-content > ul,
+.guide-content > .wp-block-media-text {
+    margin-top: 2.5rem;
+}
+
+.guide-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border-subtle);
+    color: var(--color-accent-poe2);
+}
+
+.guide-content p {
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: var(--color-text-base);
+    margin: 5px;
+}
+
+.guide-content ul {
+    font-size: 1.1rem;
+    color: var(--color-text-base);
+    padding-left: 20px;
+    margin: 15px;
+}
+
+.guide-content li {
+    line-height: 1.8rem;
+    font-size: 1.1rem;
+    color: var(--color-text-base);
+}
+
+.guide-content .wp-block-media-text {
+    gap: 2rem;
+}
+
+.guide-content .wp-block-media-text__content {
+    padding: 0;
+}

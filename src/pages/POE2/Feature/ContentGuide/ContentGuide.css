@@ -1,0 +1,90 @@
+.guides-list-container-poe2 {
+    max-width: var(--width-container);
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.guides-list-title-poe2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--color-accent-poe2);
+    margin-bottom: 2rem;
+    text-align: center;
+    white-space: pre-line;
+}
+
+.guides-grid-poe2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.guide-card-poe2 {
+    height: 170px;
+    border-radius: var(--radius-medium);
+    text-decoration: none;
+    color: var(--color-text-default);
+    transition: transform 0.2s ease-in-out;
+    border: 1px solid var(--color-border-subtle);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    overflow: hidden;
+}
+
+.guide-card-poe2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 10%, rgba(0, 0, 0, 0.1) 60%, transparent 100%);
+    z-index: 1;
+}
+
+
+.guide-card-poe2:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-color: var(--color-accent-poe2);
+}
+
+.guide-card-content-poe2 {
+    padding: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.guide-card-title-poe2 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    line-height: 1.3;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.guide-list-main-container {
+    max-width: var(--width-container);
+    margin: 20px auto;
+    padding: 1.5rem;
+    position: relative;
+    border-radius: var(--radius-medium);
+}
+
+.guide-list-main-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-color: rgba(10, 10, 12, 0.75);
+    backdrop-filter: blur(5px);
+    border-radius: inherit;
+}

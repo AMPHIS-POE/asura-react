@@ -1,0 +1,179 @@
+.map-overlay {
+  max-width: 1000px;
+  margin: 20 auto;
+  background: var(--color-background-overlay);
+  border: 1px solid var(--color-border-secondary);
+  padding: 0 20px 20px 20px;
+  border-radius: 12px;
+}
+
+.map-overlay h1 {
+  text-align: center;
+  font-size: 32px;
+  color: var(--color-accent-poe2);
+  margin-bottom: calc(var(--spacing-unit) * 7.5);
+  border-bottom: 1px solid var(--color-border-primary);
+  padding: 10 0px 10 0px;
+  white-space: pre-line;
+}
+
+.map-overlay p {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: calc(var(--spacing-unit) * 7.5);
+  color: rgb(255, 255, 255);
+}
+
+.map-description {
+  text-align: center;
+  margin-bottom: calc(var(--spacing-unit) * 7.5);
+  white-space: pre-line;
+  color: var(--color-text-base);
+  line-height: 1.6;
+}
+
+.map-overlay table {
+  width: 90%;
+  max-width: 800px;
+  font-size: 20px;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.map-overlay th,
+.map-overlay td {
+  border: 1px solid var(--color-border-secondary);
+  padding: 12px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.map-overlay th {
+  font-weight: bold;
+  background-color: var(--color-background-surface);
+}
+
+.map-icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.currency-icon-small {
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.price-input,
+.count-input {
+  width: 80px;
+  text-align: center;
+  background: #222;
+  color: var(--color-text-bright);
+  border: 1px solid var(--color-text-dark);
+  border-radius: var(--radius-small);
+  padding: 6px 8px;
+  font-size: 16px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.summary-cell {
+  border: none !important;
+  padding: 0 !important;
+}
+
+.summary-row {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summary-box {
+  flex: 1;
+  background: transparent !important;
+}
+
+.summary-box:nth-child(1) {
+  text-align: left;
+}
+
+.summary-box:nth-child(2) {
+  text-align: center;
+}
+
+.summary-box:nth-child(3) {
+  text-align: right;
+}
+
+.divine-rate-box {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1.1em;
+}
+
+#divineRate {
+  width: 70px;
+  height: 36px;
+  text-align: center;
+  padding: 4px 8px;
+  margin: 0 12px;
+  font-size: 18px;
+  line-height: 1.4;
+  border: 1px solid var(--color-text-dark);
+  border-radius: var(--radius-medium);
+  background: #222;
+  color: var(--color-text-bright);
+  box-sizing: border-box;
+}
+
+#copySummary {
+  padding: 5px 10px;
+  background: #00ff99;
+  color: var(--color-background-black);
+  font-weight: bold;
+  border: none;
+  border-radius: var(--radius-medium);
+  cursor: pointer;
+  font-size: 20px;
+  width: 200px;
+  height: 70px;
+}
+
+#copySummary.copied {
+  background-color: var(--color-accent-poe1);
+  color: var(--color-text-bright);
+}
+
+.total-summary-line {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 10px;
+  font-size: 1.25rem;
+}
+
+.total-summary-line:first-child {
+  margin-top: 0;
+}
+
+.currency-icon {
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.total-numbers {
+  font-weight: bold;
+  color: #F9FF5C;
+}

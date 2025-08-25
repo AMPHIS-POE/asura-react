@@ -1,0 +1,249 @@
+.asura-custom-main-header {
+  background: var(--color-background-header);
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+  z-index: var(--z-index-header);
+}
+
+.asura-custom-main-header.with-margin-bottom {
+  margin-bottom: 50px;
+}
+
+.asura-header-inner-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--width-container);
+  margin: 0 auto;
+  padding: 15px 25px;
+  border-bottom: 1px solid var(--color-border-primary);
+}
+
+.site-branding {
+  flex-shrink: 0;
+}
+
+.asura-logo-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+}
+
+.asura-icon-logo {
+  width: 48px;
+  height: 48px;
+}
+
+.site-branding .asura-logo-image {
+  height: 48px;
+  width: auto;
+}
+
+.header-navigation-elements {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.dropdown-container {
+  position: relative;
+}
+
+.dropdown-button {
+  background: none;
+  border: none;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: color 0.2s, text-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-text-muted);
+  text-shadow: 1px 1px 2px var(--color-background-surface);
+  font-size: 22px;
+  font-family: var(--font-body);
+  white-space: nowrap;
+}
+
+.dropdown-button:hover {
+  color: var(--color-text-bright);
+}
+
+.header-navigation-elements .dropdown-button {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--color-text-base);
+  font-family: var(--font-ui);
+  border: none;
+  border-radius: 0;
+}
+
+.dropdown-button.open .chevron-icon {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  left: auto;
+  background: var(--color-background-black);
+  box-shadow: 0 8px 25px var(--color-background-overlay);
+  z-index: var(--z-index-dropdown);
+  border: 1px solid var(--color-border-secondary);
+  padding: 0;
+  width: max-content;
+  min-width: 100%;
+}
+
+.dropdown-menu-item {
+  color: var(--color-text-base);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  font-family: var(--font-ui);
+  width: 100%;
+  text-align: left;
+  transition: all 0.2s ease-in-out;
+  border: none;
+  border-left: 4px solid transparent;
+  border-bottom: 1px solid var(--color-border-subtle);
+  box-sizing: border-box;
+  text-decoration: none;
+  background: none;
+  cursor: pointer;
+}
+
+.dropdown-menu-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-menu-item:hover,
+.dropdown-menu-item.active {
+  background-color: rgba(255, 183, 0, 0.1);
+  color: var(--color-primary-dark);
+  padding-left: 16px;
+  border-left: 4px solid var(--color-primary-dark);
+}
+
+.dropdown-menu-item-icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 15px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.dropdown-menu-item-icon.large-icon {
+  width: 80px;
+  height: auto;
+}
+
+.lang-flag-icon {
+  width: 20px;
+  height: auto;
+  border-radius: var(--radius-small);
+  margin-right: 4px;
+}
+
+.chevron-icon {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s ease-in-out;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.main-landing-banner,
+.poe1-banner,
+.poe2-banner {
+  width: 100%;
+  height: 200px;
+  background-color: var(--color-background-black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  line-height: 0;
+}
+
+.main-landing-banner img:not(.banner-logo-overlay),
+.poe1-banner img:not(.banner-logo-overlay),
+.poe2-banner img:not(.banner-logo-overlay) {
+  height: 100%;
+  width: auto;
+  z-index: 0;
+}
+
+.main-landing-banner::after,
+.poe1-banner::after,
+.poe2-banner::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right,
+      var(--color-background-black) 0%,
+      transparent 25%,
+      transparent 75%,
+      var(--color-background-black) 100%);
+  z-index: 1;
+}
+
+.banner-logo-overlay {
+  position: absolute;
+  left: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 180px;
+  width: auto;
+  z-index: 2;
+  object-fit: contain;
+}
+
+.poe-header-extension {
+  width: 100%;
+}
+
+.poe-header-extension .dropdown-menu {
+  left: 0;
+  right: auto;
+}
+
+.asura-header-inner-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.header-left-section,
+.header-right-section {
+  display: flex;
+  align-items: center;
+  flex-basis: 33.33%;
+}
+
+.header-left-section {
+  justify-content: flex-start;
+}
+
+.header-right-section {
+  justify-content: flex-end;
+}
+
+.header-center-section {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.header-navigation-elements {
+  display: flex;
+  align-items: center;
+}

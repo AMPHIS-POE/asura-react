@@ -1,0 +1,177 @@
+/* 1. Web Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif+KR:wght@400;500;700;900&display=swap');
+
+/* 2. CSS Variables */
+:root {
+  --color-primary: #D94C83;
+  --color-primary-dark: #C81A53;
+  --color-accent-poe1: #ffb700;
+  --color-accent-poe2: #ffb700;
+
+  --color-text-base: #e0e0e0;
+  --color-text-bright: #ffffff;
+  --color-text-muted: #adb5bd;
+  --color-text-dark: #888;
+  --color-text-darker: #666;
+
+  --color-background-base: #111111;
+  --color-background-surface: rgba(0, 0, 0, 0.5);
+  --color-background-header: rgba(10, 10, 10, 0.8);
+  --color-background-footer: rgba(10, 10, 10, 0.4);
+  --color-background-black: #000000;
+  --color-background-overlay: rgba(0, 0, 0, 0.7);
+
+  --color-border-primary: #4a4a4a;
+  --color-border-secondary: #444444;
+  --color-border-subtle: #333333;
+
+  --font-heading: 'Cinzel', 'Noto Serif KR', serif;
+  --font-body: 'Noto Serif KR', serif;
+  --font-ui: sans-serif;
+
+  --width-container: 1200px;
+  --spacing-unit: 4px;
+
+  --radius-small: 3px;
+  --radius-medium: 8px;
+  --radius-large: 10px;
+  --radius-circle: 50%;
+
+  --z-index-header: 1000;
+  --z-index-dropdown: 1001;
+  --z-index-back-to-top: 1000;
+  --z-index-loading-overlay: 9999;
+}
+
+/* 3. Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-y: scroll;
+  scrollbar-width: auto;
+  scrollbar-color: var(--color-primary) var(--color-background-black);
+}
+
+body {
+  font-family: var(--font-ui);
+  background-color: var(--color-background-base);
+  color: var(--color-text-base);
+  background-image: url('/img/background.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 4. WebKit Scrollbar */
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--color-background-black);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary);
+  border-radius: 20px;
+  border: 3px solid var(--color-background-black);
+}
+
+/* 6. Layout */
+.site-content {
+  max-width: var(--width-container);
+  margin: 0 auto;
+  width: 100%;
+  flex-grow: 1;
+  padding: 1rem;
+}
+
+/* 7. Global Components */
+
+#loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-background-overlay);
+  z-index: var(--z-index-loading-overlay);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+#loading-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.loading-spinner {
+  width: 80px;
+  height: 80px;
+  border: 12px solid rgba(255, 255, 255, 0.2);
+  border-top-color: var(--color-primary);
+  border-radius: var(--radius-circle);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#custom-back-to-top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: var(--z-index-back-to-top);
+  background-color: var(--color-primary-dark);
+  color: var(--color-text-bright);
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: var(--radius-large);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+#custom-back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+#custom-back-to-top:hover {
+  background-color: var(--color-primary);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(217, 76, 131, 0.4);
+}
+
+/* 8. i18n */
+[data-lang="ko"] [data-lang="en"],
+[data-lang="en"] [data-lang="ko"] {
+  display: none;
+}
+
+.keyword-link {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  cursor: help;
+}

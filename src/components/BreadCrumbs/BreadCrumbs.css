@@ -1,0 +1,30 @@
+.breadcrumbs-nav {
+    padding: 20px 0;
+    color: #aaa;
+    font-size: 16px;
+    font-family: var(--font-ui);
+    font-weight: bold;
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border-primary);
+}
+
+.breadcrumbs-nav .separator {
+    margin: 0 10px;
+}
+
+.breadcrumbs-nav a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.breadcrumbs-nav a:hover {
+    color: var(--color-accent-poe2);
+    text-decoration: underline;
+}
+
+.breadcrumbs-nav .current-page {
+    color: var(--color-text-bright);
+    font-weight: bold;
+}
