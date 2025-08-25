@@ -25,13 +25,14 @@ const Poe2ContentGuide = ({ lang }) => {
             setError(null);
             setGuides([]);
             try {
-                const response = await fetch(`/wp-json/wp/v2/content_guide?lang=${lang}&_embed`);
+                const apiUrl = import.meta.env.VITE_API_URL;
+                const response = await fetch(`${apiUrl}/wp-json/wp/v2/content_guide?lang=${lang}&_embed`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch guides.');
                 }
                 const data = await response.json();
                 const filteredGuides = data.filter(guide => guide.lang === lang);
-                setGuides(filteredGuides); 
+                setGuides(filteredGuides);
             } catch (err) {
                 setError(err.message);
             } finally {
