@@ -9,7 +9,7 @@ const translations = {
     browseGames: '게임 둘러보기', language_select: '언어', lang_ko: '한글', lang_en: 'English',
     poe1_title: '패스 오브 엑자일', poe2_title: '패스 오브 엑자일 2',
     poe1_home: '홈', poe1_tools: '도구', poe1_mapCalculator: '17T 지도 계산기', poe1_voriciCalculator: '색채 계산기', poe1_regexGenerator: '정규식 생성기', poe1_builds: '빌드', poe1_fansiteLinks: '팬사이트 링크', poe1_buildsComingSoon: '빌드 페이지는 준비 중입니다!',
-    poe2_home: '홈', poe2_guides: '가이드', poe2_tools: '도구', poe2_act_guide: '캠페인 네비게이터', poe2_contentGuides: '콘텐츠 가이드', 
+    poe2_home: '홈', poe2_guides: '가이드', poe2_tools: '도구', poe2_act_guide: '캠페인 네비게이터', poe2_contentGuides: '콘텐츠 가이드',
     poe2_beginnerGuides: '초보자 가이드',
     poe2_comingSoon: '콘텐츠 준비 중입니다.',
   },
@@ -40,7 +40,8 @@ const Header = ({ lang, setLang }) => {
   useEffect(() => {
     const fetchIcons = async () => {
       try {
-        const response = await fetch('/wp-json/asura/v1/ui-icons');
+        const apiUrl = import.meta.env.VITE_API_URL;
+        const response = await fetch(`${apiUrl}/wp-json/asura/v1/ui-icons`); 
         if (!response.ok) {
           throw new Error('Network response was not ok for icons');
         }
