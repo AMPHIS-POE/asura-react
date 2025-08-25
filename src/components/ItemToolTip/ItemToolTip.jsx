@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import parse from 'html-react-parser';
-import './ItemTooltip.css';
+import './ItemToolTip.css';
 import SecondaryTooltip from './SecondaryTooltip';
 
 const ItemTooltip = ({ item, glossaryData, currentLang = 'ko' }) => {
