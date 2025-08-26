@@ -7,9 +7,9 @@ export default defineConfig({
   server: {
     proxy: {
       '/wp-json': {
-        target: 'http://localhost', 
+        target: 'https://api.asura.design',
         changeOrigin: true,
-        secure: false, 
+        secure: false,
       },
     },
   },
