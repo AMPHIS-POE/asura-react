@@ -143,17 +143,17 @@
     white-space: nowrap;
 }
 
-.guide-content > * {
+.guide-content>* {
     margin: 0;
 }
 
-.guide-content > * + * {
+.guide-content>*+* {
     margin-top: 1.2rem;
 }
 
-.guide-content > h2,
-.guide-content > ul,
-.guide-content > .wp-block-media-text {
+.guide-content>h2,
+.guide-content>ul,
+.guide-content>.wp-block-media-text {
     margin-top: 2.5rem;
 }
 
@@ -191,4 +191,10 @@
 
 .guide-content .wp-block-media-text__content {
     padding: 0;
+}
+
+.guide-content .wp-block-column img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
