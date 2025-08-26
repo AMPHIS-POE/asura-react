@@ -65,9 +65,11 @@ const Poe1FansiteLinks = ({ lang }) => {
   useEffect(() => {
     const fetchIcons = async () => {
       try {
-        const response = await fetch('/wp-json/asura/v1/ui-icons');
+        const apiUrl = `${import.meta.env.VITE_API_URL}/wp-json/asura/v1/ui-icons`;
+        const response = await fetch(apiUrl);
+
         if (!response.ok) {
-          throw new Error('Network response was not ok for icons');
+          throw new Error(`Network response was not ok for icons at ${apiUrl}`);
         }
         const data = await response.json();
         setIconUrls(data);
@@ -77,6 +79,7 @@ const Poe1FansiteLinks = ({ lang }) => {
     };
     fetchIcons();
   }, []);
+
 
   return (
     <div className="guide-list-main-container">
