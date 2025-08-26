@@ -22,7 +22,7 @@ const MapCalculator = ({ lang }) => {
   useEffect(() => {
     const fetchIcons = async () => {
       try {
-        const response = await fetch('/wp-json/asura/v1/ui-icons');
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/wp-json/asura/v1/ui-icons`);
         if (!response.ok) throw new Error('Network response was not ok for icons');
         const data = await response.json();
         setIconUrls(data);
@@ -36,7 +36,7 @@ const MapCalculator = ({ lang }) => {
   useEffect(() => {
     const fetchMapPrices = async () => {
       try {
-        const response = await fetch('/wp-json/asura/v1/mapprices');
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/wp-json/asura/v1/mapprices`);
         if (!response.ok) throw new Error('Network response was not ok');
         const mapPrices = await response.json();
 
@@ -54,7 +54,7 @@ const MapCalculator = ({ lang }) => {
   useEffect(() => {
     const fetchDivineRate = async () => {
       try {
-        const response = await fetch('/wp-json/asura/v1/divinerate');
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/wp-json/asura/v1/divinerate`);
         if (!response.ok) throw new Error('Network response was not ok');
         const data = await response.json();
 
