@@ -1,5 +1,5 @@
 .asura-custom-main-header {
-  background: var(--color-background-header);
+  background: #000000;
   padding: 0;
   box-sizing: border-box;
   position: relative;
@@ -17,7 +17,6 @@
   max-width: var(--width-container);
   margin: 0 auto;
   padding: 15px 25px;
-  border-bottom: 1px solid var(--color-border-primary);
 }
 
 .site-branding {
