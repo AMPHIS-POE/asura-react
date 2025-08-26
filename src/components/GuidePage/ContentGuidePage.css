@@ -192,3 +192,17 @@
 .guide-content .wp-block-media-text__content {
     padding: 0;
 }
+
+@media (max-width: 1024px) {
+
+    .guide-main-layout {
+        flex-direction: column;
+    }
+
+    .guide-sidebar {
+        flex-basis: auto;
+        width: 100%;
+        position: static;
+    }
+
+}
