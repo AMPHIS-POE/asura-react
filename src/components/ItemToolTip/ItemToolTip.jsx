@@ -215,7 +215,7 @@ const ItemTooltip = ({ item, glossaryData, currentLang = 'ko' }) => {
                 onMouseLeave={handleMouseLeave}
             >
                 <img src={item.acf?.item_icon?.url} alt={item.title.rendered || '아이템 아이콘'} className="item-icon-inline" />
-                <span>{parse(item.title.rendered)}</span>
+                <span>{parse(item.acf?.tooltip_display_title || item.title.rendered)}</span>
                 {ReactDOM.createPortal(TooltipPopup, document.body)}
             </span>
             <SecondaryTooltip
