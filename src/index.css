@@ -175,3 +175,20 @@ body::-webkit-scrollbar-thumb {
   text-underline-offset: 3px;
   cursor: help;
 }
+
+
+
+.site-content a {
+  color: var(--color-accent-poe1);
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.site-content a:visited {
+  color: var(--color-accent-poe1);
+}
+
+.site-content a:hover {
+  color: var(--color-text-bright);
+  text-decoration: none;
+}
