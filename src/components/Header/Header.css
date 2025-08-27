@@ -173,6 +173,7 @@
   height: 100%;
   width: auto;
   z-index: 0;
+  max-width: 100%;
 }
 
 .main-landing-banner::after,
