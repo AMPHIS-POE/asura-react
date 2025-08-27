@@ -177,7 +177,7 @@ const ItemTooltip = ({ item, glossaryData, currentLang = 'ko' }) => {
             style={{ display: (isVisible || isPinned) ? 'block' : 'none', position: 'fixed', top: position.top, left: position.left, transform: 'translate(-50%, -100%)', bottom: 'auto', opacity: 1 }}
         >
             <div className="tooltip-header" style={headerDynamicStyles}>
-                <h3 className="tooltip-title">{parse(item.title.rendered)}</h3>
+                <h3 className="tooltip-title">{parse(item.acf?.tooltip_display_title || item.title.rendered)}</h3>
             </div>
             <div className="tooltip-body">
                 {visibleFields.map((field, index) => {
