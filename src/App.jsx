@@ -8,7 +8,6 @@ import Poe1Landing from './pages/POE1/Poe1Landing';
 import Poe2Landing from './pages/POE2/Poe2Landing';
 import ContentGuidePage from './components/GuidePage/ContentGuidePage';
 import BackToTopButton from './components/BackToTopButton';
-import BaseItemTester from './pages/POE1/Feature/Build/BaseItemTester.jsx';
 import './App.css';
 
 const LoadingSpinner = () => {
