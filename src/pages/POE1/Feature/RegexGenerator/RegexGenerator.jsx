@@ -1119,7 +1119,7 @@ const RegexGenerator = ({ lang }) => {
   useEffect(() => {
     const fetchIcons = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/wp-json/asura/v1/ui-icons`);
+        const response = await fetch(`/wp-json/asura/v1/ui-icons`);
         const data = await response.json();
         setIconUrls(data);
       } catch (error) {

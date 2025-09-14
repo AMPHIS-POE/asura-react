@@ -5,7 +5,7 @@ export default function BaseItemTester() {
   const [items, setItems] = useState([]);
   const [selected, setSelected] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [onlyAxes, setOnlyAxes] = useState(true); // 간단 필터
+  const [onlyAxes, setOnlyAxes] = useState(true); 
 
   useEffect(() => {
     const url =
@@ -14,7 +14,6 @@ export default function BaseItemTester() {
     fetch(url)
       .then((r) => r.json())
       .then((data) => {
-        // ACF 없는 포스트는 제외
         const clean = Array.isArray(data) ? data.filter((p) => p.acf) : [];
         setItems(clean);
       })
@@ -30,8 +29,7 @@ export default function BaseItemTester() {
 
   const displayItems = items.filter((i) => {
     if (!onlyAxes) return true;
-    // 간단한 제목 키워드 필터(초기 테스트용)
-    // 필요하면 REST에 item_class를 노출시켜 정확히 필터링
+
     const name = i?.title?.rendered?.toLowerCase() || "";
     return name.includes("axe");
   });

@@ -8,8 +8,7 @@ function MainLanding() {
   useEffect(() => {
     const fetchIcons = async () => {
       try {
-        const apiUrl = import.meta.env.VITE_API_URL;
-        const response = await fetch(`${apiUrl}/wp-json/asura/v1/ui-icons`);
+        const response = await fetch(`/wp-json/asura/v1/ui-icons`);
         if (!response.ok) {
           throw new Error('Network response was not ok for icons');
         }

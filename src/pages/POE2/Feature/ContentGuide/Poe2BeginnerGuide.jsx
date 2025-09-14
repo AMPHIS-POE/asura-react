@@ -25,9 +25,7 @@ const Poe2BeginnerGuide = ({ lang }) => {
             setError(null);
             setGuides([]);
             try {
-                const apiUrl = import.meta.env.VITE_API_URL;
-                const response = await fetch(`${apiUrl}/wp-json/wp/v2/beginner_guide?lang=${lang}&_embed`);
-                if (!response.ok) {
+                const response = await fetch(`/wp-json/wp/v2/beginner_guide?lang=${lang}&_embed`); if (!response.ok) {
                     throw new Error('Failed to fetch guides.');
                 }
                 const data = await response.json();

@@ -5,6 +5,8 @@ import MapCalculator from './Feature/MapCalculator/MapCalculator';
 import VoriciCalculator from './Feature/VoriciCalculator/VoriciCalculator';
 import RegexGenerator from './Feature/RegexGenerator/RegexGenerator';
 import Poe1FansiteLinks from './Feature/FansiteLinks/Poe1FansiteLinks';
+import BaseItemTester from './Feature/Build/BaseItemTester';
+
 
 
 

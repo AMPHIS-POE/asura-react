@@ -30,9 +30,7 @@ const ContentGuidePage = ({ lang }) => {
     useEffect(() => {
         const fetchGlossary = async () => {
             try {
-                const apiUrl = import.meta.env.VITE_API_URL;
-                const response = await fetch(`${apiUrl}/wp-json/wp/v2/glossary?lang=${lang}&per_page=100`);
-                if (!response.ok) throw new Error('용어 사전 데이터 로딩 실패');
+                const response = await fetch(`/wp-json/wp/v2/glossary?lang=${lang}&per_page=100`); if (!response.ok) throw new Error('용어 사전 데이터 로딩 실패');
                 const glossaryItems = await response.json();
                 const glossaryMap = glossaryItems.reduce((acc, item) => {
                     acc[item.slug] = {
@@ -59,9 +57,7 @@ const ContentGuidePage = ({ lang }) => {
             const queryParams = new URLSearchParams(location.search);
             const postType = queryParams.get('type') || 'content_guide';
             try {
-                const apiUrl = import.meta.env.VITE_API_URL;
-                const response = await fetch(`${apiUrl}/wp-json/wp/v2/${postType}?slug=${slug}&lang=${lang}&_embed`);
-                if (!response.ok) {
+                const response = await fetch(`/wp-json/wp/v2/${postType}?slug=${slug}&lang=${lang}&_embed`); if (!response.ok) {
                     const errorData = await response.json();
                     throw new Error(errorData.message || 'Failed to fetch the guide.');
                 }
@@ -105,9 +101,7 @@ const ContentGuidePage = ({ lang }) => {
             const itemIds = post.acf.global_item_field.map(row => row.linked_item.ID);
             if (itemIds.length === 0) return;
             try {
-                const apiUrl = import.meta.env.VITE_API_URL;
-                const response = await fetch(`${apiUrl}/wp-json/wp/v2/item?lang=${lang}&include=${itemIds.join(',')}&per_page=100&_embed`);
-                if (!response.ok) throw new Error('Failed to fetch item details');
+                const response = await fetch(`/wp-json/wp/v2/item?lang=${lang}&include=${itemIds.join(',')}&per_page=100&_embed`); if (!response.ok) throw new Error('Failed to fetch item details');
                 const itemsData = await response.json();
                 const processedItems = itemsData.map(item => {
                     const finalItem = { ...item };
@@ -144,9 +138,7 @@ const ContentGuidePage = ({ lang }) => {
                 const postType = queryParams.get('type') || 'content_guide';
                 const fetchTranslatedSlugAndNavigate = async () => {
                     try {
-                        const apiUrl = import.meta.env.VITE_API_URL;
-                        const response = await fetch(`${apiUrl}/wp-json/wp/v2/${postType}/${translatedPostId}`);
-                        const translatedPost = await response.json();
+                        const response = await fetch(`/wp-json/wp/v2/${postType}/${translatedPostId}`); const translatedPost = await response.json();
                         if (translatedPost.slug) {
                             navigate(`/poe2/guides/${translatedPost.slug}?type=${postType}`);
                         }

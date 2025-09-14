@@ -7,8 +7,8 @@ export const navigationData = {
     bannerKey: 'banner_poe1',
     navLinks: [
       { type: 'link', path: '/poe1', textKey: 'poe1_home', end: true },
-      { 
-        type: 'dropdown', 
+      {
+        type: 'dropdown',
         id: 'tools',
         textKey: 'poe1_tools',
         activeCheck: ['map', 'vorici', 'regex'],
@@ -18,7 +18,7 @@ export const navigationData = {
           { path: '/poe1/regex', textKey: 'poe1_regexGenerator', iconKey: 'summit_map' }
         ]
       },
-      { type: 'link', path: '/poe1/build', textKey: 'poe1_builds' },
+      { type: 'link', path: '/poe1/build/base-items', textKey: 'poe1_builds' },
       { type: 'link', path: '/poe1/links', textKey: 'poe1_fansiteLinks' }
     ]
   },
