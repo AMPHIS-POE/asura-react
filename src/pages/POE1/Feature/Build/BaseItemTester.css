@@ -1,0 +1,8 @@
+.baseitem-tester { padding: 24px; }
+.controls { display: flex; gap: 12px; margin-bottom: 16px; align-items: center; }
+.controls select { padding: 8px 10px; }
+.chk { font-size: 14px; display: inline-flex; gap: 6px; align-items: center; }
+.hint { opacity: .8; font-size: 14px; }
+.item-card { margin-top: 16px; padding: 16px; border: 1px solid #333; border-radius: 8px; background: rgba(0,0,0,.3); }
+.item-card .name { margin: 0 0 8px; }
+.stats { margin: 0; padding-left: 18px; }
