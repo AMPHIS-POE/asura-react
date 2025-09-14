@@ -18,7 +18,7 @@ export const navigationData = {
           { path: '/poe1/regex', textKey: 'poe1_regexGenerator', iconKey: 'summit_map' }
         ]
       },
-      { type: 'button', textKey: 'poe1_builds', alertKey: 'poe1_buildsComingSoon' },
+      { type: 'link', path: '/poe1/build', textKey: 'poe1_builds' },
       { type: 'link', path: '/poe1/links', textKey: 'poe1_fansiteLinks' }
     ]
   },
