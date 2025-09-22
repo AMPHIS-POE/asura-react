@@ -1,0 +1,113 @@
+/* src/pages/POE1/Feature/VoriciCalculator/SocketCalculatorPage.css */
+.asura-content-container {
+    width: 100%;
+    margin: 20 auto;
+    background: var(--color-background-overlay);
+    border: 1px solid var(--color-border-secondary);
+    padding: 0 20px 20px 20px;
+    border-radius: 12px;
+}
+
+.vorici-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 16px 40px;
+    position: relative;
+}
+
+.vorici-title {
+    color: var(--color-accent-poe2);
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 1.1;
+    text-align: center;
+    padding: 18px 0;
+    margin: 0 0 12px;
+    border-top: 1px solid var(--color-border-primary);
+    border-bottom: 1px solid var(--color-border-primary);
+}
+
+.tab-container {
+    display: flex;
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.tab-button {
+    flex-grow: 1;
+    text-align: center;
+    padding: 0.8rem 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    color: var(--color-text-dark);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-right: 1px solid #444;
+    border-bottom: 2px solid var(--color-accent-poe2);
+    font-size: 1rem;
+}
+
+.tab-button:last-child {
+    border-right: none;
+}
+
+.tab-button:hover {
+    background-color: #3a3a44;
+    color: var(--color-text-bright);
+}
+
+.tab-button.active {
+    color: var(--color-accent-poe2);
+    background-color: var(--color-background-overlay);
+    border-top: 2px solid var(--color-accent-poe2);
+    border-left: 2px solid var(--color-accent-poe2);
+    border-right: 2px solid var(--color-accent-poe2);
+    border-bottom: none;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    transform: translateY(1px);
+}
+
+.calculator-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.calculator-instance-wrapper {
+    width: 100%;
+    max-width: 900px;
+}
+
+.help-button {
+    position: absolute;
+    top: 24px;
+    right: 16px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
+    color: var(--color-text-bright);
+    font-weight: 800;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.help-button img {
+    width: 36px;
+    height: 36px;
+    display: block;
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.4));
+}
+
+.help-button span {
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 1;
+}

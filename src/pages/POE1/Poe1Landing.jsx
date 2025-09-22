@@ -2,8 +2,8 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './Poe1Landing.css';
 import MapCalculator from './Feature/MapCalculator/MapCalculator';
-import VoriciCalculator from './Feature/VoriciCalculator/VoriciCalculator';
-import RegexGenerator from './Feature/RegexGenerator/RegexGenerator';
+import VoriciCalculator from './Feature/VoriciCalculator/SocketCalculatorPage';
+import RegexGeneratorPage from './Feature/RegexGenerator/RegexGeneratorPage';
 import Poe1FansiteLinks from './Feature/FansiteLinks/Poe1FansiteLinks';
 import BaseItemTester from './Feature/Build/BaseItemTester';
 
@@ -37,7 +37,7 @@ const Poe1Landing = ({ lang }) => {
           } />
           <Route path="map" element={<MapCalculator lang={lang} />} />
           <Route path="vorici" element={<VoriciCalculator lang={lang} />} />
-          <Route path="regex" element={<RegexGenerator lang={lang} />} />
+          <Route path="regex" element={<RegexGeneratorPage lang={lang} />} />
           <Route path="links" element={<Poe1FansiteLinks lang={lang} />} />
           <Route path="build" element={<BaseItemTester />} />
 

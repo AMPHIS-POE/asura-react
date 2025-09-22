@@ -34,7 +34,7 @@ function AppContent() {
             <Route path="/poe2/*" element={<Poe2Landing lang={lang} />} />
             <Route path="/poe1/guides/:slug" element={<ContentGuidePage lang={lang} />} />
             <Route path="/poe2/guides/:slug" element={<ContentGuidePage lang={lang} />} />
-            <Route path="/poe1/build/base-items" element={<BaseItemTester />} />
+            <Route path="/poe1/build/base-items"element={<BaseItemTester lang={lang} />}/>
 
           </Routes>
         </main>

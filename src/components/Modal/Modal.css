@@ -296,3 +296,21 @@
 .modal--records td:nth-child(2) {
     text-align: center;
 }
+
+.modal__content.modal--help {
+    width: 860px;
+    max-width: 96vw;
+    max-height: 90vh;
+}
+
+@media (max-width: 1024px) {
+    .modal__content.modal--help {
+        width: 720px;
+    }
+}
+
+@media (max-width: 768px) {
+    .modal__content.modal--help {
+        width: 95vw;
+    }
+}
