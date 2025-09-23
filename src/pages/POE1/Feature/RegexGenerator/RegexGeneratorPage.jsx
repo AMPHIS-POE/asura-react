@@ -4,7 +4,7 @@ import Breadcrumbs from '../../../../components/BreadCrumbs/BreadCrumbs';
 import HelpModal from '../../../../components/Modal/HelpModal';
 import RegexGenerator from './RegexGenerator';
 import './RegexGeneratorPage.css';
-import VendorRegexGenerator from './VendorRegexGenerator'; 
+import VendorRegexGenerator from './VendorRegexGenerator';
 
 
 const RegexGeneratorPage = ({ lang = 'ko' }) => {
@@ -20,7 +20,7 @@ const RegexGeneratorPage = ({ lang = 'ko' }) => {
             >
                 <span>{lang === 'ko' ? '가이드' : 'Guide'}</span>
                 <img
-                    src="http://localhost/wp-content/uploads/2025/09/exclamation.png"
+                    src="https://asura.design/wp-content/uploads/2025/09/exclamation.png"
                     alt="Guide"
                 />
             </button>

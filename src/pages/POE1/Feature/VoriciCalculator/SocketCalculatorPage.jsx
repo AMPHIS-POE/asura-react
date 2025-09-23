@@ -20,7 +20,7 @@ const SocketCalculatorPage = ({ lang }) => {
                 >
                     <span>{lang === 'ko' ? '가이드' : 'Guide'}</span>
                     <img
-                        src="http://localhost/wp-content/uploads/2025/09/exclamation.png"
+                        src="https://asura.design/wp-content/uploads/2025/09/exclamation.png"
                         alt="Guide"
                     />
                 </button>
