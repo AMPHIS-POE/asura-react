@@ -6,7 +6,7 @@ import VoriciCalculator from './Feature/VoriciCalculator/SocketCalculatorPage';
 import RegexGeneratorPage from './Feature/RegexGenerator/RegexGeneratorPage';
 import Poe1FansiteLinks from './Feature/FansiteLinks/Poe1FansiteLinks';
 import BaseItemTester from './Feature/Build/BaseItemTester';
-import ShippingCalculator from './Feature/ShippingCalculator/ShippingCalculator'; // 이 줄을 추가하세요.
+import ShippingCalculatorPage from './Feature/ShippingCalculator/ShippingCalculatorPage';
 
 
 
@@ -41,7 +41,7 @@ const Poe1Landing = ({ lang }) => {
           <Route path="regex" element={<RegexGeneratorPage lang={lang} />} />
           <Route path="links" element={<Poe1FansiteLinks lang={lang} />} />
           <Route path="build" element={<BaseItemTester />} />
-          <Route path="shipping-calculator" element={<ShippingCalculator lang={lang} />} />
+          <Route path="shipping-calculator" element={<ShippingCalculatorPage lang={lang} />} />
 
 
 

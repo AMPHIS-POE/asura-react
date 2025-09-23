@@ -1,0 +1,65 @@
+/* ===== Component-only styles: 좌측 탭 UI ===== */
+
+/* 섹션/타이틀 */
+.sc-section { padding: 18px; }
+.sc-section-title { font-size: 28px; margin: 6px 0; color: #fff; text-align: center; }
+.sc-section-desc { text-align: center; opacity: .8; margin-bottom: 16px; }
+
+/* 입력 필드 */
+.sc-field { display: grid; gap: 6px; margin: 12px auto 18px; max-width: 760px; }
+.sc-field > span { font-size: 13px; opacity: .85; text-align: center; }
+.sc-select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, .18);
+  background: #202020;
+  color: #fff;
+}
+.sc-empty { text-align: center; opacity: .7; padding: 18px 0; }
+
+/* 블록/타이틀 */
+.sc-block { margin-top: 14px; }
+.sc-block-title { font-weight: 700; margin: 6px 0 10px; color: var(--sc-accent); }
+
+/* 카드 */
+.sc-card {
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, .28);
+  padding: 12px;
+}
+.sc-card + .sc-card { margin-top: 10px; }
+.sc-card-head { display: flex; align-items: center; gap: 10px; font-size: 16px; flex-wrap: wrap; }
+.sc-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.sc-pill {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, .12);
+  font-size: 12px;
+}
+
+.sc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
+
+/* 컨트롤 바(정렬/거리) */
+.sc-controls { display: flex; gap: 12px; flex-wrap: wrap; margin: 8px 0 10px; align-items: center; }
+.sc-control { display: flex; align-items: center; gap: 8px; }
+.sc-ctl-label { font-size: 12px; opacity: .8; }
+.sc-ctl-select {
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: #161616;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, .18);
+}
+
+/* 세그먼트 버튼 */
+.sc-seg { display: inline-flex; border: 1px solid rgba(255, 255, 255, .18); border-radius: 10px; overflow: hidden; }
+.sc-seg-btn { padding: 8px 12px; background: #171717; color: #bbb; border: none; cursor: pointer; }
+.sc-seg-btn.active { background: var(--sc-accent); color: #111; font-weight: 700; }
+.sc-seg-btn:not(.active):hover { background: #2a2a2a; color: #fff; }
+
+/* 한 줄 가이드 */
+.sc-oneline { margin: 6px 0 8px; opacity: .95; }

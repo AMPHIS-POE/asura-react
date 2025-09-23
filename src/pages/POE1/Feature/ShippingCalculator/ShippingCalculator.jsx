@@ -1,269 +1,209 @@
+// src/pages/POE1/Feature/ShippingCalculator/ShippingCalculator.jsx
 import React, { useMemo, useState } from 'react';
+import seed from './kingsmarch.seed.json';
 
-const translations = {
+const L10N = {
   ko: {
-    pageTitle: '교역 계산기',
-    pageDescription: '킹스마치 교역 가치와 보상을 계산합니다.',
-    tabRewardFirst: '보상으로 찾기',
-    tabResourceFirst: '자원→항구',
+    title: '교역 계산기',
+    desc: '킹스마치 교역 가치와 보상을 계산합니다.',
     pickReward: '얻고 싶은 보상',
-    pickResource: '자원',
-    pickForm: '형태',
-    pickPort: '항구',
     bestRoute: '추천 경로',
     altRoutes: '대체 경로',
-    shipValue: '가치',
+    value: '가치',
     distance: '거리',
     bias: '바이어스',
-    barRecommended: '주괴 권장',
-    reason: '이유',
+    bar: '주괴 권장',
     none: '결과가 없습니다',
+    canvasHelp: '이미지 업데이트',
   },
   en: {
-    pageTitle: 'Trade Calculator',
-    pageDescription: 'Calculate Kingsmarch trade values and rewards.',
-    tabRewardFirst: 'Find by Reward',
-    tabResourceFirst: 'Resource → Port',
+    title: 'Trade Calculator',
+    desc: 'Calculate Kingsmarch trade values and rewards.',
     pickReward: 'Target Reward',
-    pickResource: 'Resource',
-    pickForm: 'Form',
-    pickPort: 'Port',
     bestRoute: 'Best Route',
     altRoutes: 'Alternatives',
-    shipValue: 'Value',
+    value: 'Value',
     distance: 'Distance',
     bias: 'Bias',
-    barRecommended: 'Bar Recommended',
-    reason: 'Reason',
+    bar: 'Bar Recommended',
     none: 'No results',
+    canvasHelp: 'Right tab is for your image-based guide. Replace image and add hotspots.',
   },
 };
 
-const ports = [
-  { slug: 'kalgurr', name: { ko: '칼구르', en: 'Kalgurr' }, distanceKm: 2317, rewardTags: ['unique','ward','currency-divine'] },
-  { slug: 'te-onui', name: { ko: '테 오누이', en: 'Te Onui' }, distanceKm: 939, rewardTags: ['dex-armour','jewels','unique'] },
-  { slug: 'ngakanu', name: { ko: '응가카누', en: 'Ngakanu' }, distanceKm: 186, rewardTags: ['str-armour','str-weapons','quality-gems'] },
-];
+const biasLabel = (bias, lang) => {
+  const ko = { divine: '디바인', exalted: '엑잘티드', annul: '어널', chaos: '카오스', 'stacked-decks': '스택드 덱', 'quality-gems': '품질 젬' };
+  const en = { divine: 'Divine', exalted: 'Exalted', annul: 'Annul', chaos: 'Chaos', 'stacked-decks': 'Stacked Decks', 'quality-gems': 'Quality Gems' };
+  return (lang === 'ko' ? ko[bias] : en[bias]) || bias;
+};
+const tName = (obj, lang) => obj?.name?.[lang] || obj?.name?.en || '';
+const bySlug = (list, slug) => list.find(x => x.slug === slug);
 
-const resources = [
-  {
-    slug: 'blue-zanthinium',
-    name: { ko: '푸른 잔티니움', en: 'Blue Zanthinium' },
-    forms: [{ type: 'ore', value: 8 }, { type: 'bar', value: 24 }],
-  },
-  {
-    slug: 'verisium',
-    name: { ko: '베리시움', en: 'Verisium' },
-    forms: [{ type: 'ore', value: 16 }, { type: 'bar', value: 64 }],
-  },
-  {
-    slug: 'bismuth',
-    name: { ko: '비스무트', en: 'Bismuth' },
-    forms: [{ type: 'ore', value: 9 }, { type: 'bar', value: 37 }],
-  },
-  {
-    slug: 'wheat',
-    name: { ko: '밀', en: 'Wheat' },
-    forms: [{ type: 'crop', value: 12 }],
-  },
-];
-
-const rewards = [
-  { slug: 'divine-orb', name: { ko: '신성한 오브', en: 'Divine Orb' }, category: 'currency' },
-  { slug: 'exalted-orb', name: { ko: '엑잘티드 오브', en: 'Exalted Orb' }, category: 'currency' },
-  { slug: 'orb-of-annulment', name: { ko: '소멸의 오브', en: 'Orb of Annulment' }, category: 'currency' },
-  { slug: 'chaos-orb', name: { ko: '카오스 오브', en: 'Chaos Orb' }, category: 'currency' },
-  { slug: 'stacked-decks', name: { ko: '카드 묶음', en: 'Stacked Decks' }, category: 'cards' },
-];
-
-const routes = [
-  { reward: 'divine-orb', resource: 'blue-zanthinium', form: 'bar', port: 'kalgurr', distanceKm: 2317, shipmentValue: 24, bias: 'divine', notes: ['bar_recommended'] },
-  { reward: 'exalted-orb', resource: 'blue-zanthinium', form: 'bar', port: 'te-onui', distanceKm: 939, shipmentValue: 24, bias: 'exalted', notes: ['bar_recommended'] },
-  { reward: 'orb-of-annulment', resource: 'blue-zanthinium', form: 'bar', port: 'pondium', distanceKm: 870, shipmentValue: 24, bias: 'annul', notes: ['bar_recommended'] },
-  { reward: 'chaos-orb', resource: 'verisium', form: 'bar', port: 'te-onui', distanceKm: 939, shipmentValue: 64, bias: 'chaos', notes: ['bar_recommended'] },
-  { reward: 'stacked-decks', resource: 'verisium', form: 'bar', port: 'ngakanu', distanceKm: 186, shipmentValue: 64, bias: 'stacked-decks', notes: ['bar_recommended'] },
-  { reward: 'quality-gems', resource: 'bismuth', form: 'bar', port: 'ngakanu', distanceKm: 186, shipmentValue: 37, bias: 'quality-gems', notes: ['bar_recommended'] },
-];
-
-function bySlug(list, slug) { return list.find(x => x.slug === slug); }
-function tName(obj, lang) { return obj?.name?.[lang] || obj?.name?.en || ''; }
-function labelBias(bias, lang) {
-  const mapKo = { divine: '디바인', exalted: '엑잘티드', annul: '어널', chaos: '카오스', 'stacked-decks': '스택드덱', 'quality-gems': '품질 젬' };
-  const mapEn = { divine: 'Divine', exalted: 'Exalted', annul: 'Annul', chaos: 'Chaos', 'stacked-decks': 'Stacked Decks', 'quality-gems': 'Quality Gems' };
-  return lang === 'ko' ? (mapKo[bias] || bias) : (mapEn[bias] || bias);
+function rankRoutesForReward(allRoutes, rewardSlug) {
+  const list = allRoutes.filter(r => r.reward === rewardSlug);
+  return list.sort((a, b) => (b.shipmentValue - a.shipmentValue) || (a.distanceKm - b.distanceKm));
 }
 
-function rankRoutesForReward(slug) {
-  const list = routes.filter(r => r.reward === slug);
-  return list.sort((a,b) => (b.shipmentValue - a.shipmentValue) || (a.distanceKm - b.distanceKm));
+function OneLineGuide({ r, data, lang }) {
+  const reward = bySlug(data.rewards, r.reward);
+  const res = bySlug(data.resources, r.resource);
+  const port = bySlug(data.ports, r.port) || { name:{ ko:r.port, en:r.port } };
+  const formKo = r.form === 'bar' ? '주괴' : r.form === 'ore' ? '광석' : r.form?.toUpperCase();
+  const sentence = lang === 'ko'
+    ? `${tName(reward, lang)}를 얻고 싶다면 ${tName(port, lang)} 항구에 ${tName(res, lang)}(${formKo})를 보내세요. 이유: ${biasLabel(r.bias, lang)} 바이어스.`
+    : `To get ${tName(reward, lang)}, send ${tName(res, lang)} (${r.form?.toUpperCase()}) to ${tName(port, lang)}. Reason: ${biasLabel(r.bias, lang)} bias.`;
+  return <p className="sc-oneline">{sentence}</p>;
 }
 
-function rankRoutesForResource(resourceSlug, form, portSlug) {
-  let list = routes.filter(r => r.resource === resourceSlug && (!form || r.form === form));
-  if (portSlug) list = list.filter(r => r.port === portSlug);
-  return list.sort((a,b) => (b.shipmentValue - a.shipmentValue) || (a.distanceKm - b.distanceKm));
-}
+const Pill = ({ children }) => <span className="sc-pill">{children}</span>;
 
-const Pill = ({ children }) => (
-  <span style={{ display:'inline-block', padding:'2px 8px', borderRadius:999, background:'rgba(255,255,255,0.08)', border:'1px solid rgba(255,255,255,0.1)', fontSize:12, marginRight:6 }}>
-    {children}
-  </span>
-);
-
-const Card = ({ children }) => (
-  <div style={{ border:'1px solid rgba(255,255,255,0.12)', borderRadius:16, padding:16, background:'rgba(0,0,0,0.35)', boxShadow:'0 6px 24px rgba(0,0,0,0.35)' }}>
-    {children}
-  </div>
-);
-
-const Row = ({ children }) => <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12 }}>{children}</div>;
-
-const Field = ({ label, children }) => (
-  <label style={{ display:'grid', gap:6 }}>
-    <span style={{ fontSize:13, opacity:0.85 }}>{label}</span>
-    {children}
-  </label>
-);
-
-const Select = ({ value, onChange, options }) => (
-  <select value={value} onChange={e=>onChange(e.target.value)} style={{ padding:'10px 12px', borderRadius:10, background:'#111', color:'#fff', border:'1px solid #333' }}>
-    <option value="">{''}</option>
-    {options.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
-  </select>
-);
-
-const TradeCalculator = ({ lang='ko' }) => {
-  const L = translations[lang] || translations.en;
-
-  const [tab, setTab] = useState('reward');
-  const [rewardSel, setRewardSel] = useState('');
-  const [resourceSel, setResourceSel] = useState('');
-  const [formSel, setFormSel] = useState('');
-  const [portSel, setPortSel] = useState('');
-
-  const rewardOptions = useMemo(() => rewards.map(r => ({ value:r.slug, label:tName(r,lang) })), [lang]);
-  const resourceOptions = useMemo(() => resources.map(r => ({ value:r.slug, label:tName(r,lang) })), [lang]);
-  const formOptions = useMemo(() => {
-    const r = bySlug(resources, resourceSel);
-    return (r?.forms || []).map(f => ({ value:f.type, label:f.type.toUpperCase() }));
-  }, [resourceSel]);
-
-  const portOptions = useMemo(() => ports.map(p => ({ value:p.slug, label:tName(p,lang) })), [lang]);
-
-  const rewardResults = useMemo(() => rewardSel ? rankRoutesForReward(rewardSel) : [], [rewardSel]);
-  const resourceResults = useMemo(() => resourceSel ? rankRoutesForResource(resourceSel, formSel, portSel) : [], [resourceSel, formSel, portSel]);
-
+const RouteCard = ({ r, data, lang, compact=false }) => {
+  const res = bySlug(data.resources, r.resource);
+  const port = bySlug(data.ports, r.port) || { name:{ ko:r.port, en:r.port } };
+  const reward = bySlug(data.rewards, r.reward) || { name:{ ko:r.reward, en:r.reward } };
   return (
-    <div style={{ maxWidth:960, margin:'0 auto', padding:'32px 16px', color:'#fff' }}>
-      <h2 style={{ fontSize:28, marginBottom:4 }}>{L.pageTitle}</h2>
-      <p style={{ opacity:0.8, marginBottom:24 }}>{L.pageDescription}</p>
-
-      <div style={{ display:'flex', gap:8, marginBottom:16 }}>
-        <button onClick={()=>setTab('reward')} style={{ padding:'10px 14px', borderRadius:10, border:'1px solid #333', background: tab==='reward' ? '#222' : '#111', color:'#fff' }}>{L.tabRewardFirst}</button>
-        <button onClick={()=>setTab('resource')} style={{ padding:'10px 14px', borderRadius:10, border:'1px solid #333', background: tab==='resource' ? '#222' : '#111', color:'#fff' }}>{L.tabResourceFirst}</button>
+    <div className="sc-card">
+      <div className="sc-card-head">
+        <strong>{tName(res, lang)}</strong>
+        <span>→</span>
+        <strong>{tName(port, lang)}</strong>
+        <Pill>{tName(reward, lang)}</Pill>
+        {r.notes?.includes('bar_recommended') && <Pill>{L10N[lang].bar}</Pill>}
       </div>
-
-      {tab==='reward' ? (
-        <Card>
-          <Row>
-            <Field label={L.pickReward}>
-              <Select value={rewardSel} onChange={setRewardSel} options={rewardOptions} />
-            </Field>
-          </Row>
-
-          <div style={{ height:12 }} />
-
-          {rewardResults.length ? (
-            <>
-              <h3 style={{ margin:'8px 0 10px' }}>{L.bestRoute}</h3>
-              <BestRouteList lang={lang} items={rewardResults.slice(0,1)} />
-
-              {rewardResults.length > 1 && (
-                <>
-                  <h4 style={{ margin:'16px 0 8px', opacity:0.85 }}>{L.altRoutes}</h4>
-                  <BestRouteList lang={lang} items={rewardResults.slice(1)} compact />
-                </>
-              )}
-            </>
-          ) : (
-            <div style={{ opacity:0.7 }}>{L.none}</div>
-          )}
-        </Card>
-      ) : (
-        <Card>
-          <Row>
-            <Field label={L.pickResource}>
-              <Select value={resourceSel} onChange={(v)=>{ setResourceSel(v); setFormSel(''); }} options={resourceOptions} />
-            </Field>
-            <Field label={L.pickForm}>
-              <Select value={formSel} onChange={setFormSel} options={formOptions} />
-            </Field>
-          </Row>
-          <div style={{ height:12 }} />
-          <Row>
-            <Field label={L.pickPort}>
-              <Select value={portSel} onChange={setPortSel} options={portOptions} />
-            </Field>
-            <div />
-          </Row>
-
-          <div style={{ height:12 }} />
-
-          {resourceResults.length ? (
-            <>
-              <h3 style={{ margin:'8px 0 10px' }}>{L.bestRoute}</h3>
-              <BestRouteList lang={lang} items={resourceResults.slice(0,1)} />
-
-              {resourceResults.length > 1 && (
-                <>
-                  <h4 style={{ margin:'16px 0 8px', opacity:0.85 }}>{L.altRoutes}</h4>
-                  <BestRouteList lang={lang} items={resourceResults.slice(1)} compact />
-                </>
-              )}
-            </>
-          ) : (
-            <div style={{ opacity:0.7 }}>{L.none}</div>
-          )}
-        </Card>
+      {!compact && (
+        <div className="sc-badges">
+          <Pill>{L10N[lang].value}: {r.shipmentValue}</Pill>
+          <Pill>{L10N[lang].distance}: {r.distanceKm}km</Pill>
+          <Pill>{L10N[lang].bias}: {biasLabel(r.bias, lang)}</Pill>
+        </div>
       )}
     </div>
   );
 };
 
-const BestRouteList = ({ items, compact=false, lang }) => {
-  const L = translations[lang] || translations.en;
+function RewardFinder({ lang }) {
+  const data = seed;
+  const rewardOptions = data.rewards.map(r => ({ value:r.slug, label:tName(r, lang) }));
+  const [sel, setSel] = useState('');
+
+  const [rankMode, setRankMode] = useState('value'); 
+  const [maxDist, setMaxDist] = useState('any');     
+
+  const sorters = {
+    value: (a,b) => (b.shipmentValue - a.shipmentValue) || (a.distanceKm - b.distanceKm),
+    distance: (a,b) => (a.distanceKm - b.distanceKm) || (b.shipmentValue - a.shipmentValue),
+  };
+
+  const listRaw = useMemo(() => (sel ? data.routes.filter(r => r.reward === sel) : []), [sel]);
+
+  const list = useMemo(() => {
+    let x = [...listRaw];
+    if (maxDist !== 'any') {
+      const cap = Number(maxDist);
+      x = x.filter(r => r.distanceKm <= cap);
+    }
+    x.sort(sorters[rankMode]);
+    return x;
+  }, [listRaw, rankMode, maxDist]);
+
+  const best = list[0];
+
   return (
-    <div style={{ display:'grid', gap:12 }}>
-      {items.map((r,idx)=> {
-        const res = bySlug(resources, r.resource);
-        const port = bySlug(ports, r.port) || { name: { ko:r.port, en:r.port } };
-        const reward = bySlug(rewards, r.reward) || { name: { ko:r.reward, en:r.reward } };
-        const resName = tName(res, lang);
-        const portName = tName(port, lang);
-        const rewardName = tName(reward, lang);
-        const bar = r.notes?.includes('bar_recommended');
-        return (
-          <div key={idx} style={{ display:'flex', flexDirection:'column', gap:8, border:'1px solid rgba(255,255,255,0.12)', borderRadius:12, padding:12 }}>
-            <div style={{ display:'flex', alignItems:'center', gap:10, fontSize:16 }}>
-              <strong>{resName}</strong>
-              <span>→</span>
-              <strong>{portName}</strong>
-              <Pill>{rewardName}</Pill>
-              {bar && <Pill>{L.barRecommended}</Pill>}
+    <div className="sc-section">
+      <h2 className="sc-section-title">{L10N[lang].title}</h2>
+      <p className="sc-section-desc">{L10N[lang].desc}</p>
+
+      <label className="sc-field">
+        <span>{L10N[lang].pickReward}</span>
+        <select
+          value={sel}
+          onChange={e=>setSel(e.target.value)}
+          className="sc-select"
+        >
+          <option value="" />
+          {rewardOptions.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+        </select>
+      </label>
+
+      {sel && (
+        <div className="sc-controls">
+          <div className="sc-control">
+            <span className="sc-ctl-label">{lang==='ko' ? '정렬 기준' : 'Sort by'}</span>
+            <div className="sc-seg">
+              <button
+                type="button"
+                className={`sc-seg-btn ${rankMode==='value'?'active':''}`}
+                onClick={()=>setRankMode('value')}
+              >{lang==='ko'?'가치 우선':'Value first'}</button>
+              <button
+                type="button"
+                className={`sc-seg-btn ${rankMode==='distance'?'active':''}`}
+                onClick={()=>setRankMode('distance')}
+              >{lang==='ko'?'거리 우선':'Distance first'}</button>
             </div>
-            {!compact && (
-              <div style={{ display:'flex', gap:8, flexWrap:'wrap' }}>
-                <Pill>{L.shipValue}: {r.shipmentValue}</Pill>
-                <Pill>{L.distance}: {r.distanceKm}km</Pill>
-                <Pill>{L.bias}: {labelBias(r.bias, lang)}</Pill>
-                <Pill>{L.reason}: Regular Currency</Pill>
-              </div>
-            )}
           </div>
-        );
-      })}
+
+          <div className="sc-control">
+            <span className="sc-ctl-label">{lang==='ko' ? '최대 거리' : 'Max distance'}</span>
+            <select
+              className="sc-ctl-select"
+              value={maxDist}
+              onChange={e=>setMaxDist(e.target.value)}
+            >
+              <option value="200">{lang==='ko'?'200km 이하':'≤ 200km'}</option>
+              <option value="1000">{lang==='ko'?'1000km 이하':'≤ 1000km'}</option>
+              <option value="any">{lang==='ko'?'제한 없음':'Any'}</option>
+            </select>
+          </div>
+        </div>
+      )}
+
+      {!best ? (
+        <div className="sc-empty">{L10N[lang].none}</div>
+      ) : (
+        <>
+          <div className="sc-block">
+            <div className="sc-block-title">{L10N[lang].bestRoute}</div>
+            <OneLineGuide r={best} data={data} lang={lang} />
+            <RouteCard r={best} data={data} lang={lang} />
+          </div>
+
+          {list.length > 1 && (
+            <div className="sc-block">
+              <div className="sc-block-title">{L10N[lang].altRoutes}</div>
+              <div className="sc-grid">
+                {list.slice(1, 4).map((x, i) => (
+                  <RouteCard key={i} r={x} data={data} lang={lang} compact />
+                ))}
+              </div>
+            </div>
+          )}
+        </>
+      )}
     </div>
   );
+}
+
+
+function PortAtlas({ lang }) {
+  return (
+    <div className="sc-atlas">
+      <div className="sc-atlas-toolbar">
+        <span className="sc-note">{L10N[lang].canvasHelp}</span>
+      </div>
+      <div className="sc-atlas-canvas">
+        <img
+          src="/assets/kingsmarch/map-sample.png"
+          alt="Kingsmarch ports"
+          className="sc-atlas-img"
+        />
+      </div>
+    </div>
+  );
+}
+
+const ShippingCalculator = ({ lang='ko', mode='reward' }) => {
+  return mode === 'reward' ? <RewardFinder lang={lang} /> : <PortAtlas lang={lang} />;
 };
 
-export default TradeCalculator;
+export default ShippingCalculator;

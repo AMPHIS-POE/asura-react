@@ -1,0 +1,24 @@
+{
+  "ports": [
+    { "slug": "kalgurr", "name": { "ko": "칼구르", "en": "Kalgurr" }, "distanceKm": 2317 },
+    { "slug": "te-onui", "name": { "ko": "테 오누이", "en": "Te Onui" }, "distanceKm": 939 },
+    { "slug": "ngakanu", "name": { "ko": "응가카누", "en": "Ngakanu" }, "distanceKm": 186 }
+  ],
+  "resources": [
+    { "slug": "blue-zanthinium", "name": { "ko": "푸른 잔티니움", "en": "Blue Zanthinium" }, "forms": [{ "type": "ore", "value": 8 }, { "type": "bar", "value": 24 }] },
+    { "slug": "verisium", "name": { "ko": "베리시움", "en": "Verisium" }, "forms": [{ "type": "ore", "value": 16 }, { "type": "bar", "value": 64 }] },
+    { "slug": "bismuth", "name": { "ko": "비스무트", "en": "Bismuth" }, "forms": [{ "type": "ore", "value": 9 }, { "type": "bar", "value": 37 }] }
+  ],
+  "rewards": [
+    { "slug": "divine-orb", "name": { "ko": "디바인 오브", "en": "Divine Orb" }, "category": "currency" },
+    { "slug": "exalted-orb", "name": { "ko": "엑잘티드 오브", "en": "Exalted Orb" }, "category": "currency" },
+    { "slug": "orb-of-annulment", "name": { "ko": "어널먼트 오브", "en": "Orb of Annulment" }, "category": "currency" },
+    { "slug": "stacked-decks", "name": { "ko": "스택드 덱", "en": "Stacked Decks" }, "category": "cards" }
+  ],
+  "routes": [
+    { "reward": "divine-orb", "resource": "blue-zanthinium", "form": "bar", "port": "kalgurr", "distanceKm": 2317, "shipmentValue": 24, "bias": "divine", "notes": ["bar_recommended"] },
+    { "reward": "exalted-orb", "resource": "blue-zanthinium", "form": "bar", "port": "te-onui", "distanceKm": 939, "shipmentValue": 24, "bias": "exalted", "notes": ["bar_recommended"] },
+    { "reward": "orb-of-annulment", "resource": "blue-zanthinium", "form": "bar", "port": "te-onui", "distanceKm": 939, "shipmentValue": 24, "bias": "annul", "notes": ["bar_recommended"] },
+    { "reward": "stacked-decks", "resource": "verisium", "form": "bar", "port": "ngakanu", "distanceKm": 186, "shipmentValue": 64, "bias": "stacked-decks", "notes": ["bar_recommended"] }
+  ]
+}
