@@ -79,6 +79,8 @@
     border-radius: var(--radius-small);
     border: 1px solid var(--color-border-secondary);
     cursor: pointer;
+    min-width: 100px;
+    min-height: 48px;
 }
 
 .regex-buttons-wrapper button:hover {

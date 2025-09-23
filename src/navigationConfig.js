@@ -15,7 +15,8 @@ export const navigationData = {
         items: [
           { path: '/poe1/map', textKey: 'poe1_mapCalculator', iconKey: 'abomination' },
           { path: '/poe1/vorici', textKey: 'poe1_voriciCalculator', iconKey: 'chromatic' },
-          { path: '/poe1/regex', textKey: 'poe1_regexGenerator', iconKey: 'summit_map' }
+          { path: '/poe1/regex', textKey: 'poe1_regexGenerator', iconKey: 'summit_map' },
+          { path: '/poe1/shipping-calculator', textKey: 'poe1_ShippingCalculator', iconKey: 'Kingsmarch_Ore_Bar' }
         ]
       },
       { type: 'link', path: '/poe1/build/base-items', textKey: 'poe1_builds' },

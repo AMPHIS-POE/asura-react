@@ -46,7 +46,6 @@
     cursor: pointer;
 }
 
-
 .regex-page .rgx-tabsbar {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -57,6 +56,7 @@
 .regex-page .rgx-tab {
     appearance: none;
     width: 100%;
+    font-size: 18px;
     padding: 0.8rem 1rem;
     font-weight: 800;
     color: var(--rgx-muted);
@@ -95,15 +95,12 @@
     .regex-page.asura-content-container {
         padding: 18px;
     }
-
     .regex-page .rgx-title {
         font-size: 26px;
     }
-
     .regex-page .rgx-tab {
         padding: 0.7rem 0.8rem;
     }
-
     .regex-page .rgx-content #mod-area {
         grid-template-columns: 1fr;
         gap: 12px;

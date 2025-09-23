@@ -1,0 +1,317 @@
+:root {
+  --rgx-accent: #ffcc00;
+
+  --panel-bg: rgba(40, 40, 40, .7);
+  --panel-border: rgba(255, 255, 255, .2);
+  --text-base: #eee;
+  --border-secondary: #555;
+  --input-bg: #2a2a2a;
+
+  --btn-font: 1rem;
+  --btn-pad-y: 12px;
+  --btn-pad-x: 32px;
+  --btn-minw: 0;
+  --btn-radius: 5px;
+
+  --check-size: 22px;
+  --socket: 40px;
+  --socket-gap: 10px;
+
+  --subcard-radius: 10px;
+}
+
+/* Layout */
+.vendor-regex-wrapper {
+  width: 100%
+}
+
+.vendor-cards-container {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width:768px) {
+  .vendor-cards-container {
+    grid-template-columns: 1fr 1fr
+  }
+}
+
+@media (min-width:1200px) {
+  .vendor-cards-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr
+  }
+}
+
+/* Card */
+.vendor-option-card {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.vendor-option-card h3 {
+  margin: 0 0 16px 0;
+  padding-bottom: 12px;
+  font-size: 18px;
+  color: var(--rgx-accent);
+  border-bottom: 2px solid var(--rgx-accent);
+}
+
+/* List */
+.vendor-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px
+}
+
+.vendor-option-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer
+}
+
+.vendor-option-label.group-sep {
+  margin-top: 8px;
+  padding-top: 6px
+}
+
+.vendor-option-card.modifiers .vendor-options-list,
+.vendor-option-card.weapon_bases .vendor-options-list {
+  display: grid;
+  grid-auto-rows: 34px;
+  row-gap: 8px;
+}
+
+.vendor-option-card.modifiers .vendor-option-label,
+.vendor-option-card.weapon_bases .vendor-option-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+}
+
+.vendor-option-card.modifiers .custom-checkbox,
+.vendor-option-card.weapon_bases .custom-checkbox {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 22px;
+}
+
+.vendor-option-card.modifiers .option-display-content span,
+.vendor-option-card.weapon_bases .option-display-content span {
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.vendor-output-container {
+  position: sticky;
+  top: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, .8);
+  border-radius: 10px;
+  z-index: 10;
+  backdrop-filter: blur(4px);
+}
+
+.vendor-output-container textarea {
+  flex-grow: 1;
+  min-height: 60px;
+  background: rgba(74, 74, 74, .8);
+  color: var(--text-base);
+  border: 1px solid var(--border-secondary);
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 1.5em;
+}
+
+.vendor-output-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 6px 0 18px
+}
+
+.vendor-char-count {
+  font-size: 1.25rem;
+  opacity: .85
+}
+
+.vendor-output-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px
+}
+
+/* Buttons (size via variables) */
+.vendor-output-actions .copy-btn,
+.vendor-output-actions .reset-btn {
+  font-size: var(--btn-font);
+  padding: var(--btn-pad-y) var(--btn-pad-x);
+  min-width: var(--btn-minw);
+  border-radius: var(--btn-radius);
+  font-weight: 800;
+}
+
+.copy-btn {
+  background: #2a75d1;
+  color: #fff
+}
+
+.copy-btn.copied {
+  background: #26ca57
+}
+
+.reset-btn {
+  background: #b42929;
+  color: #fff
+}
+
+/* Socket thumbs */
+.option-display-content {
+  display: flex;
+  align-items: center;
+  gap: var(--socket-gap)
+}
+
+.vendor-socket-images {
+  display: flex;
+  align-items: center
+}
+
+.vendor-socket-image {
+  width: var(--socket);
+  height: var(--socket);
+  position: relative;
+  z-index: 2
+}
+
+.vendor-socket-link {
+  width: var(--socket);
+  height: var(--socket);
+  position: relative;
+  z-index: 1;
+  margin: 0 -5px
+}
+
+/* Checkbox */
+.vendor-option-label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0
+}
+
+.custom-checkbox {
+  position: relative;
+  display: inline-block;
+  width: var(--check-size);
+  height: var(--check-size);
+  background: rgba(255, 255, 255, .1);
+  border: 2px solid rgba(255, 255, 255, .3);
+  border-radius: 5px;
+  transition: .2s;
+  flex-shrink: 0;
+}
+
+.vendor-option-label input[type="checkbox"]:checked+.custom-checkbox {
+  background: #2a75d1;
+  border-color: #61c0ff
+}
+
+.custom-checkbox::after {
+  content: '';
+  position: absolute;
+  display: none;
+  left: 5px;
+  top: -5px;
+  width: 12px;
+  height: 16px;
+  border: solid #fff;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.vendor-option-label input[type="checkbox"]:checked+.custom-checkbox::after {
+  display: block
+}
+
+/* Subcard (Other/Free Links) */
+.subcard {
+  margin-top: 14px;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: var(--subcard-radius);
+  background: rgba(255, 255, 255, .03);
+}
+
+.subcard-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid var(--rgx-accent);
+}
+
+.subcard-title-text {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--rgx-accent)
+}
+
+.subcard-body {
+  padding-top: 2px
+}
+
+/* Free links grid (centered) */
+.other-links-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, max-content));
+  column-gap: 12px;
+  row-gap: 10px;
+  justify-content: center;
+  align-items: start;
+}
+
+.other-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px
+}
+
+.other-socket {
+  width: 36px;
+  height: 36px;
+  display: block
+}
+
+.other-count-input {
+  width: 52px;
+  height: 32px;
+  padding: 0 6px;
+  text-align: center;
+  border-radius: 6px;
+  border: 1px solid var(--border-secondary);
+  background: var(--input-bg);
+  color: var(--text-base);
+  outline: none;
+}
+
+.other-count-input:focus {
+  border-color: var(--rgx-accent);
+  box-shadow: 0 0 0 2px rgba(255, 204, 0, .15)
+}
+
+/* Utility */
+.vendor-option-label.no-pointer {
+  cursor: default
+}
