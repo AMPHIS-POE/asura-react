@@ -5,6 +5,8 @@ import OldCalculator from './OldCalculator';
 import Breadcrumbs from '../../../../components/BreadCrumbs/BreadCrumbs';
 import './SocketCalculatorPage.css';
 import HelpModal from '../../../../components/Modal/HelpModal';
+import { helpContent } from './HelpContent';
+
 
 const SocketCalculatorPage = ({ lang }) => {
     const [activeTab, setActiveTab] = useState('old');
@@ -66,6 +68,8 @@ const SocketCalculatorPage = ({ lang }) => {
                 isOpen={isHelpModalOpen}
                 onClose={() => setIsHelpModalOpen(false)}
                 lang={lang}
+                contentSource={helpContent}
+
             />
         </div>
     );

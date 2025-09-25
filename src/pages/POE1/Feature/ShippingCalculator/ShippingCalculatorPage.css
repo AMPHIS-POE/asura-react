@@ -1,12 +1,10 @@
 /* ===== Page-only styles: 컨테이너/브레드크럼/헤더/탭/본문 래퍼 ===== */
 
 .sc-page.asura-content-container {
-  /* 페이지 스코프 변수 (하위 컴포넌트에서 상속) */
-  --sc-accent: #ffcc00;               /* 포인트 색 */
-  --sc-border: rgba(255, 255, 255, .12);
+  --sc-accent: #ffcc00;
+  --sc-border: rgba(255, 255, 255, .35);
   --sc-overlay: rgba(0, 0, 0, .75);
   --sc-muted: rgba(255, 255, 255, .7);
-
   position: relative;
   max-width: 1000px;
   margin: 0 auto;
@@ -16,7 +14,6 @@
   border-radius: 16px;
 }
 
-/* 우상단 가이드 버튼 */
 .sc-help {
   position: absolute;
   top: 14px;
@@ -31,9 +28,11 @@
   border: 1px solid var(--sc-border);
   border-radius: 999px;
 }
-.sc-help-icon { opacity: .8; }
 
-/* 헤더: 좌우 선 + 중앙 타이틀 */
+.sc-help-icon {
+  opacity: .8;
+}
+
 .sc-header {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -41,11 +40,13 @@
   gap: 16px;
   margin: 12px 0 18px;
 }
+
 .sc-line {
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--sc-accent), transparent);
   opacity: .9;
 }
+
 .sc-title {
   text-align: center;
   line-height: 1.2;
@@ -54,13 +55,12 @@
   text-shadow: 0 2px 8px rgba(0, 0, 0, .45);
 }
 
-/* 탭바 */
 .sc-tabs {
   display: flex;
   gap: 0;
-  border-bottom: 1px solid var(--sc-border);
   margin-bottom: 16px;
 }
+
 .sc-tab {
   flex: 1;
   text-align: center;
@@ -75,8 +75,16 @@
   border-top-right-radius: 5px;
   transition: all .2s ease-in-out;
 }
-.sc-tab:last-child { border-right: none; }
-.sc-tab:hover { background: #3a3a44; color: #fff; }
+
+.sc-tab:last-child {
+  border-right: none;
+}
+
+.sc-tab:hover {
+  background: #3a3a44;
+  color: #fff;
+}
+
 .sc-tab.active {
   color: var(--sc-accent);
   background: var(--sc-overlay);
@@ -87,18 +95,28 @@
   transform: translateY(1px);
 }
 
-/* 본문 래퍼 */
 .sc-body {
-  border: 1px solid var(--sc-border);
   border-radius: 12px;
   background: rgba(0, 0, 0, .25);
   padding: 16px;
 }
 
-/* (우측 탭) 이미지 가이드 캔버스 — 페이지 관할 */
-.sc-atlas { display: grid; gap: 10px; }
-.sc-atlas-toolbar { display: flex; justify-content: space-between; align-items: center; }
-.sc-note { opacity: .8; font-size: 14px; }
+.sc-atlas {
+  display: grid;
+  gap: 10px;
+}
+
+.sc-atlas-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sc-note {
+  opacity: .8;
+  font-size: 14px;
+}
+
 .sc-atlas-canvas {
   border: 1px solid rgba(255, 255, 255, .14);
   border-radius: 12px;
@@ -106,4 +124,10 @@
   padding: 8px;
   overflow: auto;
 }
-.sc-atlas-img { width: 100%; height: auto; display: block; border-radius: 8px; }
+
+.sc-atlas-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}

@@ -1,5 +1,5 @@
 .map-overlay {
-  max-width: 1000px;
+  max-width: 900px;
   margin: 20 auto;
   background: var(--color-background-overlay);
   border: 1px solid var(--color-border-secondary);

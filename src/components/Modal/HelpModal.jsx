@@ -1,14 +1,12 @@
 // src/components/Modal/HelpModal.jsx
 import React from 'react';
 import Modal from './Modal';
-import { helpContent } from '../../pages/POE1/Feature/VoriciCalculator/HelpContent';
 import './HelpModal.css';
 
-const HelpModal = ({ isOpen, onClose, lang = 'ko' }) => {
-  const content = helpContent[lang] || helpContent.en;
+const HelpModal = ({ isOpen, onClose, lang = 'ko', contentSource }) => {
+  const content = (contentSource && contentSource[lang]) || (contentSource && contentSource.en) || { sections: [] };
 
   return (
-    // ⬇️ 여기만 추가: customClassName="modal--help"
     <Modal isOpen={isOpen} onClose={onClose} customClassName="modal--help">
       <div className="help-root">
         {content.sections.map((sec, idx) => (

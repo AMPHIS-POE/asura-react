@@ -1,10 +1,12 @@
 // src/pages/POE1/Feature/RegexGenerator/RegexGeneratorPage.jsx
 import React, { useState } from 'react';
 import Breadcrumbs from '../../../../components/BreadCrumbs/BreadCrumbs';
-import HelpModal from '../../../../components/Modal/HelpModal';
 import RegexGenerator from './RegexGenerator';
 import './RegexGeneratorPage.css';
 import VendorRegexGenerator from './VendorRegexGenerator';
+import HelpModal from '../../../../components/Modal/HelpModal';
+import { regexHelpContent } from './RegexHelpContent';
+
 
 
 const RegexGeneratorPage = ({ lang = 'ko' }) => {
@@ -69,6 +71,8 @@ const RegexGeneratorPage = ({ lang = 'ko' }) => {
                 isOpen={isHelpModalOpen}
                 onClose={() => setIsHelpModalOpen(false)}
                 lang={lang}
+                contentSource={regexHelpContent}
+
             />
         </div>
     );

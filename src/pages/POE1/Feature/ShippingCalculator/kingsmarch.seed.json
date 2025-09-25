@@ -1,24 +1,129 @@
 {
   "ports": [
-    { "slug": "kalgurr", "name": { "ko": "칼구르", "en": "Kalgurr" }, "distanceKm": 2317 },
-    { "slug": "te-onui", "name": { "ko": "테 오누이", "en": "Te Onui" }, "distanceKm": 939 },
-    { "slug": "ngakanu", "name": { "ko": "응가카누", "en": "Ngakanu" }, "distanceKm": 186 }
+    {
+      "slug": "riben-fell",
+      "name": { "ko": "리벤펠", "en": "Riben Fell" },
+      "rewardType": "rune",
+      "specialties": ["랜덤 방어구", "랜덤 무기", "퀄리티 스킬 젬","갑충석"]
+    },
+    {
+      "slug": "ngakanu",
+      "name": { "ko": "응가카누", "en": "Ngakanu" },
+      "rewardType": "tattoo",
+      "specialties": ["힘 계열 방어구/무기", "카드 묶음"]
+    },
+    {
+      "slug": "pondium",
+      "name": { "ko": "폰디움", "en": "Pondium" },
+      "rewardType": "rune",
+      "specialties": ["지능 계열 방어구/무기", "촉매, 성유, 강탈 도면 등"]
+    },
+    {
+      "slug": "te-onui",
+      "name": { "ko": "테오누이", "en": "Te Onui" },
+      "rewardType": "tattoo",
+      "specialties": ["민첩 계열 방어구/무기", "고유 아이템", "각종 주얼"]
+    },
+    {
+      "slug": "kalgurr",
+      "name": { "ko": "칼구르", "en": "Kalgurr" },
+      "rewardType": "rune",
+      "specialties": ["무작위 방어구", "수호 방어구", "각종 파편 (균열, 군단, 환영, 의식 등)"]
+    }
   ],
+
   "resources": [
-    { "slug": "blue-zanthinium", "name": { "ko": "푸른 잔티니움", "en": "Blue Zanthinium" }, "forms": [{ "type": "ore", "value": 8 }, { "type": "bar", "value": 24 }] },
-    { "slug": "verisium", "name": { "ko": "베리시움", "en": "Verisium" }, "forms": [{ "type": "ore", "value": 16 }, { "type": "bar", "value": 64 }] },
-    { "slug": "bismuth", "name": { "ko": "비스무트", "en": "Bismuth" }, "forms": [{ "type": "ore", "value": 9 }, { "type": "bar", "value": 37 }] }
-  ],
-  "rewards": [
-    { "slug": "divine-orb", "name": { "ko": "디바인 오브", "en": "Divine Orb" }, "category": "currency" },
-    { "slug": "exalted-orb", "name": { "ko": "엑잘티드 오브", "en": "Exalted Orb" }, "category": "currency" },
-    { "slug": "orb-of-annulment", "name": { "ko": "어널먼트 오브", "en": "Orb of Annulment" }, "category": "currency" },
-    { "slug": "stacked-decks", "name": { "ko": "스택드 덱", "en": "Stacked Decks" }, "category": "cards" }
+    { "slug": "crimson-iron-ore", "name": { "ko": "진홍철 광석", "en": "Crimson Iron Ore" }, "type": "ore", "value": 4 },
+    { "slug": "crimson-iron-bar", "name": { "ko": "진홍철 주괴", "en": "Crimson Iron Bar" }, "type": "bar", "value": 16 },
+    { "slug": "orichalcum-ore", "name": { "ko": "오리칼쿰 광석", "en": "Orichalcum Ore" }, "type": "ore", "value": 5 },
+    { "slug": "orichalcum-bar", "name": { "ko": "오리칼쿰 주괴", "en": "Orichalcum Bar" }, "type": "bar", "value": 19 },
+    { "slug": "petrified-amber-ore", "name": { "ko": "석화 호박 광석", "en": "Petrified Amber Ore" }, "type": "ore", "value": 6 },
+    { "slug": "petrified-amber-bar", "name": { "ko": "석화 호박 주괴", "en": "Petrified Amber Bar" }, "type": "bar", "value": 24 },
+    { "slug": "bismuth-ore", "name": { "ko": "비스무트 광석", "en": "Bismuth Ore" }, "type": "ore", "value": 9 },
+    { "slug": "bismuth-bar", "name": { "ko": "비스무트 주괴", "en": "Bismuth Bar" }, "type": "bar", "value": 37 },
+    { "slug": "verisium-ore", "name": { "ko": "베리시움 광석", "en": "Verisium Ore" }, "type": "ore", "value": 16 },
+    { "slug": "verisium-bar", "name": { "ko": "베리시움 주괴", "en": "Verisium Bar" }, "type": "bar", "value": 64 },
+    { "slug": "wheat", "name": { "ko": "밀", "en": "Wheat" }, "type": "crop", "value": 12 },
+    { "slug": "corn", "name": { "ko": "옥수수", "en": "Corn" }, "type": "crop", "value": 15 },
+    { "slug": "pumpkin", "name": { "ko": "호박", "en": "Pumpkin" }, "type": "crop", "value": 18 },
+    { "slug": "orgourd", "name": { "ko": "오르박", "en": "Orgourd" }, "type": "crop", "value": 21 },
+    { "slug": "blue-zanthinium", "name": { "ko": "푸른도꼬마리", "en": "Blue Zanthinium" }, "type": "crop", "value": 24 }
   ],
   "routes": [
-    { "reward": "divine-orb", "resource": "blue-zanthinium", "form": "bar", "port": "kalgurr", "distanceKm": 2317, "shipmentValue": 24, "bias": "divine", "notes": ["bar_recommended"] },
-    { "reward": "exalted-orb", "resource": "blue-zanthinium", "form": "bar", "port": "te-onui", "distanceKm": 939, "shipmentValue": 24, "bias": "exalted", "notes": ["bar_recommended"] },
-    { "reward": "orb-of-annulment", "resource": "blue-zanthinium", "form": "bar", "port": "te-onui", "distanceKm": 939, "shipmentValue": 24, "bias": "annul", "notes": ["bar_recommended"] },
-    { "reward": "stacked-decks", "resource": "verisium", "form": "bar", "port": "ngakanu", "distanceKm": 186, "shipmentValue": 64, "bias": "stacked-decks", "notes": ["bar_recommended"] }
+    { "portSlug": "riben-fell", "resourceSlug": "crimson-iron-ore", "reward": "무작위 방어구" },
+    { "portSlug": "riben-fell", "resourceSlug": "crimson-iron-bar", "reward": "무작위 방어구" },
+    { "portSlug": "ngakanu", "resourceSlug": "crimson-iron-ore", "reward": "힘 계열 방어구" },
+    { "portSlug": "ngakanu", "resourceSlug": "crimson-iron-bar", "reward": "힘 계열 방어구" },
+    { "portSlug": "pondium", "resourceSlug": "crimson-iron-ore", "reward": "지능 계열 방어구" },
+    { "portSlug": "pondium", "resourceSlug": "crimson-iron-bar", "reward": "지능 계열 방어구" },
+    { "portSlug": "te-onui", "resourceSlug": "crimson-iron-ore", "reward": "민첩 계열 방어구" },
+    { "portSlug": "te-onui", "resourceSlug": "crimson-iron-bar", "reward": "민첩 계열 방어구" },
+    { "portSlug": "kalgurr", "resourceSlug": "crimson-iron-ore", "reward": "무작위 방어구" },
+    { "portSlug": "kalgurr", "resourceSlug": "crimson-iron-bar", "reward": "무작위 방어구" },
+
+    { "portSlug": "riben-fell", "resourceSlug": "orichalcum-ore", "reward": "무작위 무기" },
+    { "portSlug": "riben-fell", "resourceSlug": "orichalcum-bar", "reward": "무작위 무기" },
+    { "portSlug": "ngakanu", "resourceSlug": "orichalcum-ore", "reward": "힘 계열 무기" },
+    { "portSlug": "ngakanu", "resourceSlug": "orichalcum-bar", "reward": "힘 계열 무기" },
+    { "portSlug": "pondium", "resourceSlug": "orichalcum-ore", "reward": "지능 계열 무기" },
+    { "portSlug": "pondium", "resourceSlug": "orichalcum-bar", "reward": "지능 계열 무기" },
+    { "portSlug": "te-onui", "resourceSlug": "orichalcum-ore", "reward": "민첩 계열 무기" },
+    { "portSlug": "te-onui", "resourceSlug": "orichalcum-bar", "reward": "민첩 계열 무기" },
+    { "portSlug": "kalgurr", "resourceSlug": "orichalcum-ore", "reward": "무작위 무기" },
+    { "portSlug": "kalgurr", "resourceSlug": "orichalcum-bar", "reward": "무작위 무기" },
+
+    { "portSlug": "riben-fell", "resourceSlug": "petrified-amber-ore", "reward": "반지" },
+    { "portSlug": "riben-fell", "resourceSlug": "petrified-amber-bar", "reward": "반지" },
+    { "portSlug": "ngakanu", "resourceSlug": "petrified-amber-ore", "reward": "허리띠" },
+    { "portSlug": "ngakanu", "resourceSlug": "petrified-amber-bar", "reward": "허리띠" },
+    { "portSlug": "pondium", "resourceSlug": "petrified-amber-ore", "reward": "목걸이" },
+    { "portSlug": "pondium", "resourceSlug": "petrified-amber-bar", "reward": "목걸이" },
+    { "portSlug": "te-onui", "resourceSlug": "petrified-amber-ore", "reward": "퀄리티 주얼리" },
+    { "portSlug": "te-onui", "resourceSlug": "petrified-amber-bar", "reward": "퀄리티 주얼리" },
+    { "portSlug": "kalgurr", "resourceSlug": "petrified-amber-ore", "reward": "반지, 허리띠" },
+    { "portSlug": "kalgurr", "resourceSlug": "petrified-amber-bar", "reward": "반지, 허리띠" },
+
+    { "portSlug": "riben-fell", "resourceSlug": "bismuth-ore", "reward": "퀄리티 스킬 젬" },
+    { "portSlug": "riben-fell", "resourceSlug": "bismuth-bar", "reward": "바알 스킬 젬" },
+    { "portSlug": "ngakanu", "resourceSlug": "bismuth-bar", "reward": "퀄리티 서포트 젬, 특출난 젬" },
+    { "portSlug": "pondium", "resourceSlug": "bismuth-bar", "reward": "플라스크" },
+    { "portSlug": "te-onui", "resourceSlug": "bismuth-bar", "reward": "주얼, 심연 주얼, 타락한 주얼" },
+    { "portSlug": "kalgurr", "resourceSlug": "bismuth-bar", "reward": "수호 방어구" },
+
+    { "portSlug": "riben-fell", "resourceSlug": "verisium-bar", "reward": "갑충석" },
+    { "portSlug": "ngakanu", "resourceSlug": "verisium-bar", "reward": "카드 묶음" },
+    { "portSlug": "pondium", "resourceSlug": "verisium-bar", "reward": "기폭제, 성유, 화석, 강탈 계약/도면" },
+    { "portSlug": "te-onui", "resourceSlug": "verisium-bar", "reward": "고유 아이템" },
+    { "portSlug": "kalgurr", "resourceSlug": "verisium-bar", "reward": "조각 (균열, 군단, 의식 등)" },
+
+    { "portSlug": "riben-fell", "resourceSlug": "wheat", "reward": "화폐 (방어구 장인의 고철)" },
+    { "portSlug": "ngakanu", "resourceSlug": "wheat", "reward": "화폐 (대장장이의 숫돌)" },
+    { "portSlug": "pondium", "resourceSlug": "wheat", "reward": "화폐 (확장의 오브)" },
+    { "portSlug": "te-onui", "resourceSlug": "wheat", "reward": "화폐 (진화의 오브)" },
+    { "portSlug": "kalgurr", "resourceSlug": "wheat", "reward": "화폐 (변화의 오브)" },
+
+    { "portSlug": "riben-fell", "resourceSlug": "corn", "reward": "화폐 (연금술의 오브)" },
+    { "portSlug": "ngakanu", "resourceSlug": "corn", "reward": "화폐 (정제의 오브)" },
+    { "portSlug": "pondium", "resourceSlug": "corn", "reward": "화폐 (기회의 오브)" },
+    { "portSlug": "te-onui", "resourceSlug": "corn", "reward": "화폐 (카오스 오브)" },
+    { "portSlug": "kalgurr", "resourceSlug": "corn", "reward": "화폐 (바알 오브)" },
+
+    { "portSlug": "riben-fell", "resourceSlug": "pumpkin", "reward": "화폐 (색채의 오브)" },
+    { "portSlug": "ngakanu", "resourceSlug": "pumpkin", "reward": "화폐 (쥬얼러 오브)" },
+    { "portSlug": "pondium", "resourceSlug": "pumpkin", "reward": "화폐 (연결의 오브)" },
+    { "portSlug": "te-onui", "resourceSlug": "pumpkin", "reward": "화폐 (유리직공의 방울)" },
+    { "portSlug": "kalgurr", "resourceSlug": "pumpkin", "reward": "화폐 (세공사의 프리즘)" },
+
+    { "portSlug": "riben-fell", "resourceSlug": "orgourd", "reward": "화폐 (지도제작자의 끌)" },
+    { "portSlug": "ngakanu", "resourceSlug": "orgourd", "reward": "화폐 (지평의 오브)" },
+    { "portSlug": "pondium", "resourceSlug": "orgourd", "reward": "화폐 (취소의 오브)" },
+    { "portSlug": "te-onui", "resourceSlug": "orgourd", "reward": "화폐 (주입의 오브)" },
+    { "portSlug": "kalgurr", "resourceSlug": "orgourd", "reward": "화폐 (자극의 오브)" },
+
+    { "portSlug": "riben-fell", "resourceSlug": "blue-zanthinium", "reward": "화폐 (축복의 오브)" },
+    { "portSlug": "ngakanu", "resourceSlug": "blue-zanthinium", "reward": "화폐 (제왕의 오브)" },
+    { "portSlug": "pondium", "resourceSlug": "blue-zanthinium", "reward": "화폐 (소멸의 오브)" },
+    { "portSlug": "te-onui", "resourceSlug": "blue-zanthinium", "reward": "화폐 (엑잘티드 오브)" },
+    { "portSlug": "kalgurr", "resourceSlug": "blue-zanthinium", "reward": "화폐 (디바인 오브)" }
   ]
 }

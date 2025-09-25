@@ -2,7 +2,7 @@
 :root {
     --rgx-accent: var(--color-accent-poe2, #ffcc00);
     --rgx-overlay: var(--color-background-overlay, rgba(0, 0, 0, 0.35));
-    --rgx-muted: var(--color-text-muted, #cfcfcf);
+    --rgx-muted: var(--color-text-muted, #ffffff);
     --rgx-muted-weak: rgba(255, 255, 255, 0.12);
 }
 
@@ -12,7 +12,7 @@
     margin: 0 auto;
     padding: 24px 24px 32px;
     background: var(--rgx-overlay);
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 12px;
     box-sizing: border-box;
 }
@@ -20,7 +20,8 @@
 .regex-page .rgx-header {
     padding: 18px 0;
     border-top: 1px solid var(--rgx-muted-weak);
-    border-bottom: 1px solid var(--rgx-muted-weak);
+    border-bottom: 2px solid var(--rgx-muted-weak);
+    border-bottom-color: rgba(255, 255, 255, 0.15);
     margin-bottom: 14px;
 }
 
@@ -35,15 +36,24 @@
 
 .regex-page .help-button {
     position: absolute;
-    top: 18px;
+    top: 48px;
     right: 18px;
     background: transparent;
     border: none;
-    color: var(--rgx-accent);
     display: inline-flex;
     align-items: center;
     gap: 6px;
     cursor: pointer;
+}
+
+.regex-page .help-button span {
+    font-size: 18px; /* 👈 여기에 원하는 글자 크기를 입력하세요. */
+    color: var(--rgx-accent); /* 글자 색상도 여기서 지정하는 것이 좋습니다. */
+}
+
+.regex-page .help-button img {
+    width: 36px;
+    height: 36px;
 }
 
 .regex-page .rgx-tabsbar {
@@ -94,12 +104,15 @@
     .regex-page.asura-content-container {
         padding: 18px;
     }
+
     .regex-page .rgx-title {
         font-size: 26px;
     }
+
     .regex-page .rgx-tab {
         padding: 0.7rem 0.8rem;
     }
+
     .regex-page .rgx-content #mod-area {
         grid-template-columns: 1fr;
         gap: 12px;
