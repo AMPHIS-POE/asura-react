@@ -150,9 +150,9 @@
   gap: 12px
 }
 
-/* Buttons (size via variables) */
 .vendor-output-actions .copy-btn,
 .vendor-output-actions .reset-btn {
+  border: none;
   font-size: var(--btn-font);
   padding: var(--btn-pad-y) var(--btn-pad-x);
   min-width: var(--btn-minw);
@@ -174,7 +174,6 @@
   color: #fff
 }
 
-/* Socket thumbs */
 .option-display-content {
   display: flex;
   align-items: center;

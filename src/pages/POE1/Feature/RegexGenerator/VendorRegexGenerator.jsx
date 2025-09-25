@@ -270,11 +270,11 @@ const I18N = {
 const get3LGroupKey = (opt) => (opt.label === 'rgb' ? 'rgb' : opt.label[0]);
 const get2LGroupKey = (opt) => (/^([rgb])\1$/.test(opt.label) ? 'same' : 'mix');
 
-function buildOtherLinksRegex(enabled, counts) {
+function buildOtherLinksRegex(enabled, counts, lang = 'ko') {
   if (!enabled || !counts) return '';
   const order = ['r', 'g', 'b'].filter(c => Number(counts[c]) > 0);
   if (order.length === 0) return '';
-  const head = 'ts:.+';
+  const head = lang === 'ko' ? '홈:.+' : 'ts:.+';
   if (order.length === 1) {
     const c = order[0];
     return `${head}(\\S*${c}){${counts[c]}}`;
@@ -333,7 +333,7 @@ const VendorRegexGenerator = ({ lang = 'ko' }) => {
     const restRaw = others.filter(Boolean).map(stripAllQuotes).join('|');
     const baseRegex = buildWeaponBaseRegex(baseOptions, lang);
     const wandGemRegexRaw = buildWandGemRegex(wandGemOptions, lang);
-    const otherLinksRegex = buildOtherLinksRegex(true, otherCounts);
+    const otherLinksRegex = buildOtherLinksRegex(true, otherCounts, lang);
     const finalRaw = joinAlternations([
       three,
       two,
