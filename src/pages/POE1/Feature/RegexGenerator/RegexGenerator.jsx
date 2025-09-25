@@ -8,6 +8,11 @@ import {
   rarityMapping, advancedOptionsConfig,
 } from './MapMods';
 
+const RGX_PLACEHOLDER = {
+  ko: '아래 옵션을 선택해 정규식을 생성하세요.',
+  en: 'Select options below to generate a regex string.',
+};
+
 const RegexGenerator = ({ lang, embedded = false }) => {
   const [iconUrls, setIconUrls] = useState({});
   const [ruleGroups, setRuleGroups] = useState([{ id: Date.now(), conditions: [{ type: 'quantity', value: '' }] }]);
@@ -23,9 +28,7 @@ const RegexGenerator = ({ lang, embedded = false }) => {
   const [isCopied, setIsCopied] = useState(false);
   const advancedContentRef = useRef(null), basicContentRef = useRef(null);
 
-  // icons
   useEffect(() => { fetch(`/wp-json/asura/v1/ui-icons`).then(r => r.json()).then(setIconUrls).catch(() => { }); }, []);
-  // restore
   useEffect(() => {
     try {
       const saved = JSON.parse(localStorage.getItem('regexGeneratorState'));
@@ -36,14 +39,11 @@ const RegexGenerator = ({ lang, embedded = false }) => {
       }
     } catch { }
   }, []);
-  // persist
   useEffect(() => {
     localStorage.setItem('regexGeneratorState', JSON.stringify({ ruleGroups, excludedMods, includedMods, checkboxes }));
   }, [ruleGroups, excludedMods, includedMods, checkboxes]);
-  // accordion height
   useEffect(() => { if (openAccordions.advanced && advancedContentRef.current) advancedContentRef.current.style.maxHeight = `${advancedContentRef.current.scrollHeight}px`; }, [ruleGroups, openAccordions.advanced]);
 
-  // handlers
   const handleCheckboxChange = (id) => setCheckboxes(p => {
     const n = { ...p, [id]: !p[id] };
     if (id === 'filter-corrupted-yes' && n[id]) n['filter-corrupted-no'] = false;
@@ -66,7 +66,6 @@ const RegexGenerator = ({ lang, embedded = false }) => {
     setOpenAccordions({ basic: false, advanced: false });
   };
 
-  // number ≥N regex
   const generateMinNumberRegex = (v) => {
     const num = Number(v); if (isNaN(num) || num < 10 || num >= 1000) return '';
     const s = String(num), len = s.length, parts = [];
@@ -79,7 +78,6 @@ const RegexGenerator = ({ lang, embedded = false }) => {
     return `(${parts.reverse().join('|')})`;
   };
 
-  // build final regex
   const regexOutput = useMemo(() => {
     const isKo = lang === 'ko', parts = [];
     const getRegexText = (c) => {
@@ -180,7 +178,12 @@ const RegexGenerator = ({ lang, embedded = false }) => {
       )}
 
       <div id="regex-fixed-container">
-        <textarea id="regexOutputFinal" value={regexOutput} readOnly />
+        <textarea
+          id="regexOutputFinal"
+          value={regexOutput}
+          readOnly
+          placeholder={lang === 'ko' ? RGX_PLACEHOLDER.ko : RGX_PLACEHOLDER.en}
+        />
         <div className="regex-output-footer">
           <div id="regex-char-counter-container">
             <span id="regexCharCounter" style={{ color: regexOutput.length > 250 ? '#e53935' : 'inherit' }}>
@@ -195,9 +198,7 @@ const RegexGenerator = ({ lang, embedded = false }) => {
           </div>
         </div>
 
-        {/* Accordions */}
         <div className="filter-accordions-wrapper">
-          {/* Advanced Options */}
           <div className="accordion-container">
             <button className={`accordion-toggle ${openAccordions.advanced ? 'active' : ''}`} onClick={() => toggleAccordion('advanced')}>
               {lang === 'ko' ? '고급 옵션' : 'Advanced Options'}
@@ -232,7 +233,6 @@ const RegexGenerator = ({ lang, embedded = false }) => {
             </div>
           </div>
 
-          {/* Basic Options */}
           <div className="accordion-container">
             <button className={`accordion-toggle ${openAccordions.basic ? 'active' : ''}`} onClick={() => toggleAccordion('basic')}>
               {lang === 'ko' ? '기본 옵션' : 'Basic Options'}
@@ -260,7 +260,6 @@ const RegexGenerator = ({ lang, embedded = false }) => {
           </div>
         </div>
 
-        {/* Mod pickers */}
         <div id="mod-area">
           <div className="option-group">
             <h3>{lang === 'ko' ? '❌제외할 모드' : '❌Mods to Exclude'}</h3>
@@ -283,7 +282,6 @@ const RegexGenerator = ({ lang, embedded = false }) => {
     </div>
   );
 
-  // embedded면 래퍼 제거, 아니면 기존 래퍼 유지
   return embedded ? inner : (
     <div id="regex" className="section">
       {inner}
