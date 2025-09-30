@@ -3,7 +3,7 @@ import Breadcrumbs from '../../../../components/BreadCrumbs/BreadCrumbs';
 import HelpModal from '../../../../components/Modal/HelpModal';
 import ShippingCalculator from './ShippingCalculator';
 import './ShippingCalculatorPage.css';
-import { helpContent } from './Helpcontent';
+import { helpContent } from './HelpContent';
 import DisenchantCalculator from './DisenchantCalculator';
 
 
