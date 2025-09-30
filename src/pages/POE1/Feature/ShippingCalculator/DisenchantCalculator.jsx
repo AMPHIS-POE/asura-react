@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import disenchantSeed from './disenchant.seed.json';
+import disenchantSeed from './Disenchant.seed.json';
 import './DisenchantCalculator.css';
 
 const L10N = {
