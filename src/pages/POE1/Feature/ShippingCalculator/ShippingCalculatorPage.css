@@ -1,11 +1,10 @@
-/* ===== Page-only styles: 컨테이너/브레드크럼/헤더/탭/본문 래퍼 ===== */
-
 .sc-page.asura-content-container {
   --sc-accent: #ffcc00;
   --sc-border: rgba(255, 255, 255, .35);
   --sc-overlay: rgba(0, 0, 0, .75);
   --sc-muted: rgba(255, 255, 255, .7);
-  position: relative;
+
+  position: relative; 
   max-width: 1000px;
   margin: 0 auto;
   padding: 24px 24px 32px;
@@ -14,45 +13,52 @@
   border-radius: 16px;
 }
 
-.sc-help {
+.sc-help-button {
   position: absolute;
-  top: 14px;
-  right: 16px;
-  display: inline-flex;
+  top: 40px;
+  right: 24px;
+  z-index: 10;
+  display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  font-weight: 600;
-  color: #fff;
-  background: transparent;
-  border: 1px solid var(--sc-border);
-  border-radius: 999px;
+  gap: 6px;
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--sc-muted);
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+  transition: color .2s ease;
 }
 
-.sc-help-icon {
-  opacity: .8;
+.sc-help-button:hover {
+    color: #fff;
 }
 
-.sc-header {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 16px;
-  margin: 12px 0 18px;
+.sc-help-button img {
+  width: 36px;
+  height: 36px;
+  display: block;
 }
 
-.sc-line {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--sc-accent), transparent);
-  opacity: .9;
+.sc-help-button span {
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 1;
+  color: var(--sc-accent);
 }
 
 .sc-title {
   text-align: center;
   line-height: 1.2;
   font-size: 32px;
-  color: #fff;
+  color: var(--sc-accent); 
   text-shadow: 0 2px 8px rgba(0, 0, 0, .45);
+  font-weight: 900;
+  padding: 18px 0;
+  margin: 0 0 12px;
+  border-top: 1px solid var(--sc-border);
+  border-bottom: 1px solid var(--sc-border);
 }
 
 .sc-tabs {
@@ -99,35 +105,4 @@
   border-radius: 12px;
   background: rgba(0, 0, 0, .25);
   padding: 16px;
-}
-
-.sc-atlas {
-  display: grid;
-  gap: 10px;
-}
-
-.sc-atlas-toolbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.sc-note {
-  opacity: .8;
-  font-size: 14px;
-}
-
-.sc-atlas-canvas {
-  border: 1px solid rgba(255, 255, 255, .14);
-  border-radius: 12px;
-  background: rgba(0, 0, 0, .22);
-  padding: 8px;
-  overflow: auto;
-}
-
-.sc-atlas-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 8px;
 }

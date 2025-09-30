@@ -1,0 +1,1017 @@
+[
+  {
+    "name": "원죄",
+    "key": "Original Sin",
+    "yield_default": 1128.89,
+    "yield_ilvl84": 2257780,
+    "yield_ilvl84_q20": 2709336
+  },
+  {
+    "name": "코텍스 모조품",
+    "key": "Replica Cortex",
+    "yield_default": 1064.09,
+    "yield_ilvl84": 2128180,
+    "yield_ilvl84_q20": 2553816
+  },
+  {
+    "name": "헤드헌터",
+    "key": "Headhunter",
+    "yield_default": 891.16,
+    "yield_ilvl84": 1782320,
+    "yield_ilvl84_q20": 2138784
+  },
+  {
+    "name": "마법사의 피",
+    "key": "Mageblood",
+    "yield_default": 891.16,
+    "yield_ilvl84": 1782320,
+    "yield_ilvl84_q20": 2138784
+  },
+  {
+    "name": "운명의 저항",
+    "key": "Defiance of Destiny",
+    "yield_default": 891.16,
+    "yield_ilvl84": 1782320,
+    "yield_ilvl84_q20": 2138784
+  },
+  {
+    "name": "암초의 파멸",
+    "key": "Reefbane",
+    "yield_default": 851.24,
+    "yield_ilvl84": 1702480,
+    "yield_ilvl84_q20": 2042976
+  },
+  {
+    "name": "무광의 연막 모조품",
+    "key": "Replica Shroud of the Lightless",
+    "yield_default": 791.78,
+    "yield_ilvl84": 1583560,
+    "yield_ilvl84_q20": 1900272
+  },
+  {
+    "name": "정체 감옥",
+    "key": "Stasis Prison",
+    "yield_default": 791.78,
+    "yield_ilvl84": 1583560,
+    "yield_ilvl84_q20": 1900272
+  },
+  {
+    "name": "종자",
+    "key": "The Squire",
+    "yield_default": 768.72,
+    "yield_ilvl84": 1537440,
+    "yield_ilvl84_q20": 1844928
+  },
+  {
+    "name": "라키아타의 춤",
+    "key": "Rakiata's Dance",
+    "yield_default": 768.72,
+    "yield_ilvl84": 1537440,
+    "yield_ilvl84_q20": 1844928
+  },
+  {
+    "name": "낚시꾼의 고리",
+    "key": "Angler's Plait",
+    "yield_default": 734.29,
+    "yield_ilvl84": 1468580,
+    "yield_ilvl84_q20": 1762296
+  },
+  {
+    "name": "별의 탄생",
+    "key": "Starforge",
+    "yield_default": 703.49,
+    "yield_ilvl84": 1406980,
+    "yield_ilvl84_q20": 1688376
+  },
+  {
+    "name": "공허의 탄생",
+    "key": "Voidforge",
+    "yield_default": 703.49,
+    "yield_ilvl84": 1406980,
+    "yield_ilvl84_q20": 1688376
+  },
+  {
+    "name": "콩고르의 끝없는 격노 모조품",
+    "key": "Replica Kongor's Undying Rage",
+    "yield_default": 703.49,
+    "yield_ilvl84": 1406980,
+    "yield_ilvl84_q20": 1688376
+  },
+  {
+    "name": "메아리의 탄생",
+    "key": "Echoforge",
+    "yield_default": 703.49,
+    "yield_ilvl84": 1406980,
+    "yield_ilvl84_q20": 1688376
+  },
+  {
+    "name": "라이온아이의 섬광",
+    "key": "Lioneye's Glare",
+    "yield_default": 683,
+    "yield_ilvl84": 1366000,
+    "yield_ilvl84_q20": 1639200
+  },
+  {
+    "name": "디비나리우스",
+    "key": "Divinarius",
+    "yield_default": 683,
+    "yield_ilvl84": 1366000,
+    "yield_ilvl84_q20": 1639200
+  },
+  {
+    "name": "피의 정수",
+    "key": "Essentia Sanguis",
+    "yield_default": 683,
+    "yield_ilvl84": 1366000,
+    "yield_ilvl84_q20": 1639200
+  },
+  {
+    "name": "실세",
+    "key": "Kingmaker",
+    "yield_default": 683,
+    "yield_ilvl84": 1366000,
+    "yield_ilvl84_q20": 1639200
+  },
+  {
+    "name": "영혼 수확자",
+    "key": "Soul Taker",
+    "yield_default": 663.11,
+    "yield_ilvl84": 1326220,
+    "yield_ilvl84_q20": 1591464
+  },
+  {
+    "name": "전도성 균열",
+    "key": "Voltaxic Rift",
+    "yield_default": 643.79,
+    "yield_ilvl84": 1287580,
+    "yield_ilvl84_q20": 1545096
+  },
+  {
+    "name": "앗지리의 경멸",
+    "key": "Atziri's Disfavour",
+    "yield_default": 643.79,
+    "yield_ilvl84": 1287580,
+    "yield_ilvl84_q20": 1545096
+  },
+  {
+    "name": "황혼의 아침 모조품",
+    "key": "Replica Duskdawn",
+    "yield_default": 643.79,
+    "yield_ilvl84": 1287580,
+    "yield_ilvl84_q20": 1545096
+  },
+  {
+    "name": "피의 탐색자",
+    "key": "Bloodseeker",
+    "yield_default": 606.84,
+    "yield_ilvl84": 1213680,
+    "yield_ilvl84_q20": 1456416
+  },
+  {
+    "name": "구원자",
+    "key": "The Saviour",
+    "yield_default": 606.84,
+    "yield_ilvl84": 1213680,
+    "yield_ilvl84_q20": 1456416
+  },
+  {
+    "name": "투코하마의 요새 모조품",
+    "key": "Replica Tukohama's Fortress",
+    "yield_default": 589.16,
+    "yield_ilvl84": 1178320,
+    "yield_ilvl84_q20": 1413984
+  },
+  {
+    "name": "칼란드라의 손길",
+    "key": "Kalandra's Touch",
+    "yield_default": 572,
+    "yield_ilvl84": 1144000,
+    "yield_ilvl84_q20": 1372800
+  },
+  {
+    "name": "비노의 부엌칼",
+    "key": "Bino's Kitchen Knife",
+    "yield_default": 539.17,
+    "yield_ilvl84": 1078340,
+    "yield_ilvl84_q20": 1294008
+  },
+  {
+    "name": "마로히 에르키",
+    "key": "Marohi Erqi",
+    "yield_default": 523.46,
+    "yield_ilvl84": 1046920,
+    "yield_ilvl84_q20": 1256304
+  },
+  {
+    "name": "숙명의 바람",
+    "key": "The Winds of Fate",
+    "yield_default": 493.41,
+    "yield_ilvl84": 986820,
+    "yield_ilvl84_q20": 1184184
+  },
+  {
+    "name": "증오의 탄생",
+    "key": "Hateforge",
+    "yield_default": 389.5,
+    "yield_ilvl84": 779000,
+    "yield_ilvl84_q20": 934800
+  },
+  {
+    "name": "울네톨의 맹세",
+    "key": "Uul-Netol's Vow",
+    "yield_default": 367.15,
+    "yield_ilvl84": 734300,
+    "yield_ilvl84_q20": 881160
+  },
+  {
+    "name": "영혼 승천",
+    "key": "Soul Ascension",
+    "yield_default": 317.64,
+    "yield_ilvl84": 635280,
+    "yield_ilvl84_q20": 762336
+  },
+  {
+    "name": "니미스",
+    "key": "Nimis",
+    "yield_default": 317.64,
+    "yield_ilvl84": 635280,
+    "yield_ilvl84_q20": 762336
+  },
+  {
+    "name": "헤드헌터 모조품",
+    "key": "Replica Headhunter",
+    "yield_default": 316.7,
+    "yield_ilvl84": 633400,
+    "yield_ilvl84_q20": 760080
+  },
+  {
+    "name": "시련의 탑",
+    "key": "The Tower of Ordeals",
+    "yield_default": 282.22,
+    "yield_ilvl84": 564440,
+    "yield_ilvl84_q20": 677328
+  },
+  {
+    "name": "고통의 멍에",
+    "key": "Yoke of Suffering",
+    "yield_default": 236.36,
+    "yield_ilvl84": 472720,
+    "yield_ilvl84_q20": 567264
+  },
+  {
+    "name": "푸어조이의 은신처 모조품",
+    "key": "Replica Poorjoy's Asylum",
+    "yield_default": 229.47,
+    "yield_ilvl84": 458940,
+    "yield_ilvl84_q20": 550728
+  },
+  {
+    "name": "마나폭풍",
+    "key": "Manastorm",
+    "yield_default": 210,
+    "yield_ilvl84": 420000,
+    "yield_ilvl84_q20": 504000
+  },
+  {
+    "name": "약해진 숨결 모조품",
+    "key": "Replica Bated Breath",
+    "yield_default": 206,
+    "yield_ilvl84": 412000,
+    "yield_ilvl84_q20": 494400
+  },
+  {
+    "name": "교살의 손아귀",
+    "key": "Stranglegasp",
+    "yield_default": 203.28,
+    "yield_ilvl84": 406560,
+    "yield_ilvl84_q20": 487872
+  },
+  {
+    "name": "페룰의 모피 모조품",
+    "key": "Replica Farrul's Fur",
+    "yield_default": 186.58,
+    "yield_ilvl84": 373160,
+    "yield_ilvl84_q20": 447792
+  },
+  {
+    "name": "키타바의 연회",
+    "key": "Kitava's Feast",
+    "yield_default": 181.15,
+    "yield_ilvl84": 362300,
+    "yield_ilvl84_q20": 434760
+  },
+  {
+    "name": "성운 모조품",
+    "key": "Replica Nebulis",
+    "yield_default": 181.15,
+    "yield_ilvl84": 362300,
+    "yield_ilvl84_q20": 434760
+  },
+  {
+    "name": "말라카이의 징표",
+    "key": "Malachai's Mark",
+    "yield_default": 175.87,
+    "yield_ilvl84": 351740,
+    "yield_ilvl84_q20": 422088
+  },
+  {
+    "name": "윈드리퍼 모조품",
+    "key": "Replica Windripper",
+    "yield_default": 170.75,
+    "yield_ilvl84": 341500,
+    "yield_ilvl84_q20": 409800
+  },
+  {
+    "name": "물결 분쇄기",
+    "key": "Tidebreaker",
+    "yield_default": 165.78,
+    "yield_ilvl84": 331560,
+    "yield_ilvl84_q20": 397872
+  },
+  {
+    "name": "영원의 연막 모조품",
+    "key": "Replica Eternity Shroud",
+    "yield_default": 165.78,
+    "yield_ilvl84": 331560,
+    "yield_ilvl84_q20": 397872
+  },
+  {
+    "name": "전멸의 접근",
+    "key": "Annihilation's Approach",
+    "yield_default": 165.78,
+    "yield_ilvl84": 331560,
+    "yield_ilvl84_q20": 397872
+  },
+  {
+    "name": "영원한 지옥",
+    "key": "Eternal Damnation",
+    "yield_default": 165.78,
+    "yield_ilvl84": 331560,
+    "yield_ilvl84_q20": 397872
+  },
+  {
+    "name": "황혼의 아침",
+    "key": "Duskdawn",
+    "yield_default": 160.95,
+    "yield_ilvl84": 321900,
+    "yield_ilvl84_q20": 386280
+  },
+  {
+    "name": "염수 왕관",
+    "key": "The Brine Crown",
+    "yield_default": 156.26,
+    "yield_ilvl84": 312520,
+    "yield_ilvl84_q20": 375024
+  },
+  {
+    "name": "앗지리의 예리함 모조품",
+    "key": "Replica Atziri's Acuity",
+    "yield_default": 156.26,
+    "yield_ilvl84": 312520,
+    "yield_ilvl84_q20": 375024
+  },
+  {
+    "name": "가루칸의 비행",
+    "key": "Garukhan's Flight",
+    "yield_default": 151.71,
+    "yield_ilvl84": 303420,
+    "yield_ilvl84_q20": 364104
+  },
+  {
+    "name": "극도",
+    "key": "The Utmost",
+    "yield_default": 151.26,
+    "yield_ilvl84": 302520,
+    "yield_ilvl84_q20": 363024
+  },
+  {
+    "name": "투코하마의 요새",
+    "key": "Tukohama's Fortress",
+    "yield_default": 147.29,
+    "yield_ilvl84": 294580,
+    "yield_ilvl84_q20": 353496
+  },
+  {
+    "name": "예언자의 포도주",
+    "key": "Wine of the Prophet",
+    "yield_default": 139.53,
+    "yield_ilvl84": 279060,
+    "yield_ilvl84_q20": 334872
+  },
+  {
+    "name": "별을 부르는 자",
+    "key": "Starcaller",
+    "yield_default": 139.53,
+    "yield_ilvl84": 279060,
+    "yield_ilvl84_q20": 334872
+  },
+  {
+    "name": "장미의 유산",
+    "key": "Legacy of the Rose",
+    "yield_default": 139.53,
+    "yield_ilvl84": 279060,
+    "yield_ilvl84_q20": 334872
+  },
+  {
+    "name": "엔트로피의 유린",
+    "key": "Entropic Devastation",
+    "yield_default": 134.79,
+    "yield_ilvl84": 269580,
+    "yield_ilvl84_q20": 323496
+  },
+  {
+    "name": "탐위르 이슬리의 망토",
+    "key": "Cloak of Tawm'r Isley",
+    "yield_default": 127.05,
+    "yield_ilvl84": 254100,
+    "yield_ilvl84_q20": 304920
+  },
+  {
+    "name": "이단의 손",
+    "key": "Hand of Heresy",
+    "yield_default": 116.86,
+    "yield_ilvl84": 233720,
+    "yield_ilvl84_q20": 280464
+  },
+  {
+    "name": "아라칼리의 송곳니",
+    "key": "Arakaali's Fang",
+    "yield_default": 116.27,
+    "yield_ilvl84": 232540,
+    "yield_ilvl84_q20": 279048
+  },
+  {
+    "name": "결백한 순교자",
+    "key": "Martyr of Innocence",
+    "yield_default": 112.89,
+    "yield_ilvl84": 225780,
+    "yield_ilvl84_q20": 270936
+  },
+  {
+    "name": "사이렌의 노래",
+    "key": "Song of the Sirens",
+    "yield_default": 111.95,
+    "yield_ilvl84": 223900,
+    "yield_ilvl84_q20": 268680
+  },
+  {
+    "name": "제르피의 마지막 숨결",
+    "key": "Zerphi's Last Breath",
+    "yield_default": 106.41,
+    "yield_ilvl84": 212820,
+    "yield_ilvl84_q20": 255384
+  },
+  {
+    "name": "알베른의 적대 모조품",
+    "key": "Replica Alberon's Warpath",
+    "yield_default": 103.31,
+    "yield_ilvl84": 206620,
+    "yield_ilvl84_q20": 247944
+  },
+  {
+    "name": "피로 물든 복수의 구속구",
+    "key": "Binds of Bloody Vengeance",
+    "yield_default": 100.8,
+    "yield_ilvl84": 201600,
+    "yield_ilvl84_q20": 241920
+  },
+  {
+    "name": "말로니의 기계 장치 모조품",
+    "key": "Replica Maloney's Mechanism",
+    "yield_default": 91.79,
+    "yield_ilvl84": 183580,
+    "yield_ilvl84_q20": 220296
+  },
+  {
+    "name": "트리파논 모조품",
+    "key": "Replica Trypanon",
+    "yield_default": 79.18,
+    "yield_ilvl84": 158360,
+    "yield_ilvl84_q20": 190032
+  },
+  {
+    "name": "그루스컬의 가죽",
+    "key": "Gruthkul's Pelt",
+    "yield_default": 74.63,
+    "yield_ilvl84": 149260,
+    "yield_ilvl84_q20": 179112
+  },
+  {
+    "name": "디알라의 악행",
+    "key": "Dialla's Malefaction",
+    "yield_default": 72.46,
+    "yield_ilvl84": 144920,
+    "yield_ilvl84_q20": 173904
+  },
+  {
+    "name": "랄라케쉬의 조바심",
+    "key": "Ralakesh's Impatience",
+    "yield_default": 70.35,
+    "yield_ilvl84": 140700,
+    "yield_ilvl84_q20": 168840
+  },
+  {
+    "name": "하늘 달리기",
+    "key": "Skyforth",
+    "yield_default": 69.77,
+    "yield_ilvl84": 139540,
+    "yield_ilvl84_q20": 167448
+  },
+  {
+    "name": "주입된 교두보",
+    "key": "Infused Beachhead",
+    "yield_default": 67.73,
+    "yield_ilvl84": 135460,
+    "yield_ilvl84_q20": 162552
+  },
+  {
+    "name": "악령 군주",
+    "key": "Wraithlord",
+    "yield_default": 66.31,
+    "yield_ilvl84": 132620,
+    "yield_ilvl84_q20": 159144
+  },
+  {
+    "name": "위대한 늑대의 눈",
+    "key": "Eyes of the Greatwolf",
+    "yield_default": 65.76,
+    "yield_ilvl84": 131520,
+    "yield_ilvl84_q20": 157824
+  },
+  {
+    "name": "신비한 굴절기",
+    "key": "Mystic Refractor",
+    "yield_default": 63.66,
+    "yield_ilvl84": 127320,
+    "yield_ilvl84_q20": 152784
+  },
+  {
+    "name": "어둠 예견자",
+    "key": "The Dark Seer",
+    "yield_default": 62.5,
+    "yield_ilvl84": 125000,
+    "yield_ilvl84_q20": 150000
+  },
+  {
+    "name": "리슬라사의 감개",
+    "key": "Ryslatha's Coil",
+    "yield_default": 62.5,
+    "yield_ilvl84": 125000,
+    "yield_ilvl84_q20": 150000
+  },
+  {
+    "name": "빙타 광장",
+    "key": "The Vinktar Square",
+    "yield_default": 61.99,
+    "yield_ilvl84": 123980,
+    "yield_ilvl84_q20": 148776
+  },
+  {
+    "name": "원한의 품",
+    "key": "Enmity's Embrace",
+    "yield_default": 61.99,
+    "yield_ilvl84": 123980,
+    "yield_ilvl84_q20": 148776
+  },
+  {
+    "name": "운명의 속박",
+    "key": "Bound By Destiny",
+    "yield_default": 60,
+    "yield_ilvl84": 120000,
+    "yield_ilvl84_q20": 144000
+  },
+  {
+    "name": "똬리를 트는 속삭임",
+    "key": "Coiling Whisper",
+    "yield_default": 59.7,
+    "yield_ilvl84": 119400,
+    "yield_ilvl84_q20": 143280
+  },
+  {
+    "name": "솔라리스의 그늘",
+    "key": "Shade of Solaris",
+    "yield_default": 58.91,
+    "yield_ilvl84": 117820,
+    "yield_ilvl84_q20": 141384
+  },
+  {
+    "name": "부패의 종복",
+    "key": "Servant of Decay",
+    "yield_default": 58.43,
+    "yield_ilvl84": 116860,
+    "yield_ilvl84_q20": 140232
+  },
+  {
+    "name": "배신의 쓴맛",
+    "key": "Betrayal's Sting",
+    "yield_default": 58.43,
+    "yield_ilvl84": 116860,
+    "yield_ilvl84_q20": 140232
+  },
+  {
+    "name": "공허 충전기",
+    "key": "Void Battery",
+    "yield_default": 56.73,
+    "yield_ilvl84": 113460,
+    "yield_ilvl84_q20": 136152
+  },
+  {
+    "name": "리그월드의 화살",
+    "key": "Rigwald's Quills",
+    "yield_default": 56.73,
+    "yield_ilvl84": 113460,
+    "yield_ilvl84_q20": 136152
+  },
+  {
+    "name": "황동 철갑",
+    "key": "The Brass Dome",
+    "yield_default": 56.73,
+    "yield_ilvl84": 113460,
+    "yield_ilvl84_q20": 136152
+  },
+  {
+    "name": "루나리스의 빛",
+    "key": "Light of Lunaris",
+    "yield_default": 55.53,
+    "yield_ilvl84": 111060,
+    "yield_ilvl84_q20": 133272
+  },
+  {
+    "name": "씬의 부활",
+    "key": "Sin's Rebirth",
+    "yield_default": 53.91,
+    "yield_ilvl84": 107820,
+    "yield_ilvl84_q20": 129384
+  },
+  {
+    "name": "영혼 거열기",
+    "key": "Soul Ripper",
+    "yield_default": 53.91,
+    "yield_ilvl84": 107820,
+    "yield_ilvl84_q20": 129384
+  },
+  {
+    "name": "바람의 걸음",
+    "key": "Seven-League Step",
+    "yield_default": 53.47,
+    "yield_ilvl84": 106940,
+    "yield_ilvl84_q20": 128328
+  },
+  {
+    "name": "전사의 유산",
+    "key": "Warrior's Legacy",
+    "yield_default": 53.47,
+    "yield_ilvl84": 106940,
+    "yield_ilvl84_q20": 128328
+  },
+  {
+    "name": "우주의 영사기",
+    "key": "Astral Projector",
+    "yield_default": 53.47,
+    "yield_ilvl84": 106940,
+    "yield_ilvl84_q20": 128328
+  },
+  {
+    "name": "베나리우스의 관측기",
+    "key": "Venarius' Astrolabe",
+    "yield_default": 53.47,
+    "yield_ilvl84": 106940,
+    "yield_ilvl84_q20": 128328
+  },
+  {
+    "name": "기록관의 도구",
+    "key": "The Arkhon's Tools",
+    "yield_default": 52.61,
+    "yield_ilvl84": 105220,
+    "yield_ilvl84_q20": 126264
+  },
+  {
+    "name": "아룬의 기둥 모조품",
+    "key": "Replica Pillars of Arun",
+    "yield_default": 51.91,
+    "yield_ilvl84": 103820,
+    "yield_ilvl84_q20": 124584
+  },
+  {
+    "name": "무한의 속삭임",
+    "key": "Whispers of Infinity",
+    "yield_default": 51.91,
+    "yield_ilvl84": 103820,
+    "yield_ilvl84_q20": 124584
+  },
+  {
+    "name": "비호의 오로라",
+    "key": "Aegis Aurora",
+    "yield_default": 50.4,
+    "yield_ilvl84": 100800,
+    "yield_ilvl84_q20": 120960
+  },
+  {
+    "name": "시간의 파도",
+    "key": "The Tides of Time",
+    "yield_default": 50.4,
+    "yield_ilvl84": 100800,
+    "yield_ilvl84_q20": 120960
+  },
+  {
+    "name": "일곱 개의 가르침",
+    "key": "Seven Teachings",
+    "yield_default": 50,
+    "yield_ilvl84": 100000,
+    "yield_ilvl84_q20": 120000
+  },
+  {
+    "name": "가시우박",
+    "key": "Spinehail",
+    "yield_default": 49.34,
+    "yield_ilvl84": 98680,
+    "yield_ilvl84_q20": 118416
+  },
+  {
+    "name": "앗지리의 위풍",
+    "key": "Atziri's Splendour",
+    "yield_default": 48.93,
+    "yield_ilvl84": 97860,
+    "yield_ilvl84_q20": 117432
+  },
+  {
+    "name": "도리아니의 기계실",
+    "key": "Doryani's Machinarium",
+    "yield_default": 48.93,
+    "yield_ilvl84": 97860,
+    "yield_ilvl84_q20": 117432
+  },
+  {
+    "name": "무광의 연막",
+    "key": "Shroud of the Lightless",
+    "yield_default": 47.51,
+    "yield_ilvl84": 95020,
+    "yield_ilvl84_q20": 114024
+  },
+  {
+    "name": "어둠의 국왕",
+    "key": "The Dark Monarch",
+    "yield_default": 46.51,
+    "yield_ilvl84": 93020,
+    "yield_ilvl84_q20": 111624
+  },
+  {
+    "name": "볼의 헌신",
+    "key": "Voll's Devotion",
+    "yield_default": 46.12,
+    "yield_ilvl84": 92240,
+    "yield_ilvl84_q20": 110688
+  },
+  {
+    "name": "샤브론의 계시",
+    "key": "Shavronne's Revelation",
+    "yield_default": 46.12,
+    "yield_ilvl84": 92240,
+    "yield_ilvl84_q20": 110688
+  },
+  {
+    "name": "윈드리퍼",
+    "key": "Windripper",
+    "yield_default": 46.12,
+    "yield_ilvl84": 92240,
+    "yield_ilvl84_q20": 110688
+  },
+  {
+    "name": "커다란 일식",
+    "key": "Magna Eclipsis",
+    "yield_default": 46.12,
+    "yield_ilvl84": 92240,
+    "yield_ilvl84_q20": 110688
+  },
+  {
+    "name": "도리아니의 주먹",
+    "key": "Doryani's Fist",
+    "yield_default": 44.78,
+    "yield_ilvl84": 89560,
+    "yield_ilvl84_q20": 107472
+  },
+  {
+    "name": "인디곤",
+    "key": "Indigon",
+    "yield_default": 44.78,
+    "yield_ilvl84": 89560,
+    "yield_ilvl84_q20": 107472
+  },
+  {
+    "name": "페룰의 모피",
+    "key": "Farrul's Fur",
+    "yield_default": 44.78,
+    "yield_ilvl84": 89560,
+    "yield_ilvl84_q20": 107472
+  },
+  {
+    "name": "페룰의 추적",
+    "key": "Farrul's Chase",
+    "yield_default": 44.78,
+    "yield_ilvl84": 89560,
+    "yield_ilvl84_q20": 107472
+  },
+  {
+    "name": "붉은 악몽",
+    "key": "The Red Nightmare",
+    "yield_default": 43.84,
+    "yield_ilvl84": 87680,
+    "yield_ilvl84_q20": 105216
+  },
+  {
+    "name": "녹색 악몽",
+    "key": "The Green Nightmare",
+    "yield_default": 43.84,
+    "yield_ilvl84": 87680,
+    "yield_ilvl84_q20": 105216
+  },
+  {
+    "name": "파란 악몽",
+    "key": "The Blue Nightmare",
+    "yield_default": 43.84,
+    "yield_ilvl84": 87680,
+    "yield_ilvl84_q20": 105216
+  },
+  {
+    "name": "합리적인 교리",
+    "key": "Rational Doctrine",
+    "yield_default": 43.84,
+    "yield_ilvl84": 87680,
+    "yield_ilvl84_q20": 105216
+  },
+  {
+    "name": "카옴의 심장",
+    "key": "Kaom's Heart",
+    "yield_default": 43.48,
+    "yield_ilvl84": 86960,
+    "yield_ilvl84_q20": 104352
+  },
+  {
+    "name": "래스피스 구체",
+    "key": "Rathpith Globe",
+    "yield_default": 43.48,
+    "yield_ilvl84": 86960,
+    "yield_ilvl84_q20": 104352
+  },
+  {
+    "name": "분광의 수호자",
+    "key": "Prism Guardian",
+    "yield_default": 43.48,
+    "yield_ilvl84": 86960,
+    "yield_ilvl84_q20": 104352
+  },
+  {
+    "name": "부서진 믿음",
+    "key": "Broken Faith",
+    "yield_default": 43.48,
+    "yield_ilvl84": 86960,
+    "yield_ilvl84_q20": 104352
+  },
+  {
+    "name": "코스프리의 장난",
+    "key": "Cospri's Malice",
+    "yield_default": 43.48,
+    "yield_ilvl84": 86960,
+    "yield_ilvl84_q20": 104352
+  },
+  {
+    "name": "인펄사의 상심",
+    "key": "Inpulsa's Broken Heart",
+    "yield_default": 43.48,
+    "yield_ilvl84": 86960,
+    "yield_ilvl84_q20": 104352
+  },
+  {
+    "name": "지혜와 행동의 손아귀",
+    "key": "Hand of Wisdom and Action",
+    "yield_default": 43.48,
+    "yield_ilvl84": 86960,
+    "yield_ilvl84_q20": 104352
+  },
+  {
+    "name": "붉은 발자취",
+    "key": "The Red Trail",
+    "yield_default": 43.48,
+    "yield_ilvl84": 86960,
+    "yield_ilvl84_q20": 104352
+  },
+  {
+    "name": "도리아니의 기만",
+    "key": "Doryani's Delusion",
+    "yield_default": 43.48,
+    "yield_ilvl84": 86960,
+    "yield_ilvl84_q20": 104352
+  },
+  {
+    "name": "여왕의 갈망",
+    "key": "The Queen's Hunger",
+    "yield_default": 43.48,
+    "yield_ilvl84": 86960,
+    "yield_ilvl84_q20": 104352
+  },
+  {
+    "name": "말로니의 기계 장치",
+    "key": "Maloney's Mechanism",
+    "yield_default": 43.48,
+    "yield_ilvl84": 86960,
+    "yield_ilvl84_q20": 104352
+  },
+  {
+    "name": "잔인한 속박",
+    "key": "Brutal Restraint",
+    "yield_default": 43.48,
+    "yield_ilvl84": 86960,
+    "yield_ilvl84_q20": 104352
+  },
+  {
+    "name": "형제단의 증표",
+    "key": "Badge of the Brotherhood",
+    "yield_default": 43.48,
+    "yield_ilvl84": 86960,
+    "yield_ilvl84_q20": 104352
+  },
+  {
+    "name": "불멸의 의지",
+    "key": "The Immortal Will",
+    "yield_default": 43.48,
+    "yield_ilvl84": 86960,
+    "yield_ilvl84_q20": 104352
+  },
+  {
+    "name": "카옴의 심장 모조품",
+    "key": "Replica Kaom's Heart",
+    "yield_default": 43.48,
+    "yield_ilvl84": 86960,
+    "yield_ilvl84_q20": 104352
+  },
+  {
+    "name": "붉은 발자취 모조품",
+    "key": "Replica Red Trail",
+    "yield_default": 43.48,
+    "yield_ilvl84": 86960,
+    "yield_ilvl84_q20": 104352
+  },
+  {
+    "name": "비리디의 장막",
+    "key": "Viridi's Veil",
+    "yield_default": 43.48,
+    "yield_ilvl84": 86960,
+    "yield_ilvl84_q20": 104352
+  },
+  {
+    "name": "도플갱어 위장",
+    "key": "Doppelgänger Guise",
+    "yield_default": 43.48,
+    "yield_ilvl84": 86960,
+    "yield_ilvl84_q20": 104352
+  },
+  {
+    "name": "여신의 은총",
+    "key": "Grace of the Goddess",
+    "yield_default": 43.48,
+    "yield_ilvl84": 86960,
+    "yield_ilvl84_q20": 104352
+  },
+  {
+    "name": "천둥 주먹",
+    "key": "Thunderfist",
+    "yield_default": 42.21,
+    "yield_ilvl84": 84420,
+    "yield_ilvl84_q20": 101304
+  },
+  {
+    "name": "스테판 야드",
+    "key": "Steppan Eard",
+    "yield_default": 42.21,
+    "yield_ilvl84": 84420,
+    "yield_ilvl84_q20": 101304
+  },
+  {
+    "name": "이단자의 면사포",
+    "key": "Heretic's Veil",
+    "yield_default": 42.21,
+    "yield_ilvl84": 84420,
+    "yield_ilvl84_q20": 101304
+  },
+  {
+    "name": "마키나 미트",
+    "key": "Machina Mitts",
+    "yield_default": 42.21,
+    "yield_ilvl84": 84420,
+    "yield_ilvl84_q20": 101304
+  },
+  {
+    "name": "포자 수호",
+    "key": "Sporeguard",
+    "yield_default": 42.21,
+    "yield_ilvl84": 84420,
+    "yield_ilvl84_q20": 101304
+  },
+  {
+    "name": "도리아니의 프로토타입",
+    "key": "Doryani's Prototype",
+    "yield_default": 42.21,
+    "yield_ilvl84": 84420,
+    "yield_ilvl84_q20": 101304
+  }
+]
