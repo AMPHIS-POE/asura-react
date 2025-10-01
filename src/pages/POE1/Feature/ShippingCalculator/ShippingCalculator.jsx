@@ -9,40 +9,28 @@ const bySlug = (list, slug) => list.find(x => x.slug === slug);
 const L10N = {
   ko: {
     title: '교역 계산기',
-    selectReward: '보상을 선택하세요.',
+    selectReward: '룬? 문신?',
     rune: '룬',
     tattoo: '문신',
     rewardsHeader: '보상 목록',
     minerals: '광물',
     crops: '작물',
     currencyLabel: '화폐',
-    tipsHeading: '핵심 팁',
+    tipsHeading: '우측 상단의 가이드에 여러 중요한 팁이 있으니 참고하세요',
     tips: [
-      '모든 작물은 기본적으로 모든 화폐를 교역 보상으로 제공하지만 작물별, 지역별로 일정한 경향성이 있습니다. 물론 어디까지나 ‘경향성’이라는 점 체크하시길 바랍니다.',
-      '고급 화폐가 주 타겟이라면 광물을 포함하지 않는 것이 좋습니다. 전체 수송 가치에서 작물 비중이 높을수록 고급 화폐 확률이 상승합니다.',
-      '마석학 가루는 고급 화폐의 등장 확률과는 상관 없으며, 오직 기존 보상을 증폭시키는 역할만 수행합니다. 더불어 수송 가치를 초과해서 넣을수록 효율이 빠르게 감소하므로 수송 가치가 2배가 되도록 해주는 것이 가장 효율적입니다.',
-      '선호 자원 퀘스트는 기본적으로 수행해주는 것이 좋습니다. 할당량을 모두 만족하면 주로 고유 아이템 등을 추가 보상을 받을 수 있으며, 모든 항구의 할당량 등급이 전역적으로 상승해 보상의 질이 점점 좋아집니다.',
-      '각종 광물은 주괴로 제련 시 효율이 5배 상승합니다.',
-      '수송 가치가 70만일 때 신성한 오브가 50% 확률로, 5000만일 때 평균 2.5개의 거울 파편이 등장합니다.'
     ]
   },
   en: {
     title: 'Trade (Shipping) Calculator',
-    selectReward: 'Select a Reward',
+    selectReward: 'Rune? Tattoo?',
     rune: 'Rune',
     tattoo: 'Tattoo',
     rewardsHeader: 'Rewards',
     minerals: 'Ore',
     crops: 'Crops',
     currencyLabel: 'Currency',
-    tipsHeading: 'Key Tips',
+    tipsHeading: 'Please check the guide at the top right for several key tips',
     tips: [
-      'All crops can reward any currency, but each crop/port shows certain tendencies. But, just treat it as tendencies, not guarantees.',
-      'If your target is high-tier currency, avoid mixing in Ore. A higher crop share in total shipping value increases the chance.',
-      'Thaumaturgic Dust does not affect high-tier currency chance; it only amplifies existing rewards. Efficiency drops past the shipping value; aiming around 2× shipping value is most efficient.',
-      'Preferred-resource quests are generally worth doing. Meeting the quota often grants extra rewards (e.g., uniques). Completing a quota raises quota ranks globally, improving overall reward quality.',
-      'Smelting ores into bars yields about 5× efficiency.',
-      'Around 700k shipping value, Divine Orb appears ~50%; around 50M, you see an average of ~2.5 Mirror Shards.'
     ]
   }
 };

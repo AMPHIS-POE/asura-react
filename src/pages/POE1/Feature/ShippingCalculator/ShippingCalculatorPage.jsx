@@ -6,34 +6,27 @@ import './ShippingCalculatorPage.css';
 import { helpContent } from './HelpContent';
 import DisenchantCalculator from './DisenchantCalculator';
 
-
 const L10N = {
   ko: {
     title: '교역 계산기',
     tabReward: '보상 네비게이터',
+    tabRewardImage: '보상 네비게이터 (이미지)',
     tabReserved: '가루 계산기',
     guide: '가이드',
-    reservedHeadline: 'Reserved Area',
-    reservedDesc:
-      '이 영역은 교역 계산기와 무관한 별도 기능을 위해 예약되었습니다. 절대로 수정하지 마십시오.',
   },
   en: {
     title: 'Shipping Calculator',
     tabReward: 'Reward Navigator',
+    tabRewardImage: 'Reward Navigator (Image)',
     tabReserved: 'Dust Calculator',
     guide: 'Guide',
-    reservedHeadline: 'Reserved Area',
-    reservedDesc:
-      'This area is reserved for a feature unrelated to the trade calculator. Do not modify.',
   },
 };
 
 const ShippingCalculatorPage = ({ lang = 'ko' }) => {
   const [tab, setTab] = useState('reward');
   const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
-
   const [iconUrls, setIconUrls] = useState(null);
-
   const [rarityData, setRarityData] = useState(null);
   const [currencyData, setCurrencyData] = useState(null);
 
@@ -135,6 +128,13 @@ const ShippingCalculatorPage = ({ lang = 'ko' }) => {
         </button>
         <button
           type="button"
+          className={`sc-tab ${tab === 'reward-image' ? 'active' : ''}`}
+          onClick={() => setTab('reward-image')}
+        >
+          {L10N[lang].tabRewardImage}
+        </button>
+        <button
+          type="button"
           className={`sc-tab ${tab === 'reserved' ? 'active' : ''}`}
           onClick={() => setTab('reserved')}
         >
@@ -150,6 +150,20 @@ const ShippingCalculatorPage = ({ lang = 'ko' }) => {
             currencyData={currencyData}
             rarityData={rarityData}
           />
+        )}
+
+        {tab === 'reward-image' && (
+          <div>
+            {!iconUrls ? (
+              <div className="sc-empty">Loading Image...</div>
+            ) : (
+              <img 
+                src={iconUrls.kingsmarch_cheatsheet} 
+                alt="Reward Navigator Map" 
+                style={{ width: '100%', display: 'block' }} 
+              />
+            )}
+          </div>
         )}
 
         {tab === 'reserved' && (

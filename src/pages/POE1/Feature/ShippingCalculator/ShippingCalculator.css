@@ -236,9 +236,9 @@
 
 .reward-table-tip .tip-heading {
   display: block;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--sc-accent);
-  margin-bottom: 8px;
+  text-align: center;
 }
 
 .reward-table-tip .tip-heading {
