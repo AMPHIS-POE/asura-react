@@ -349,8 +349,8 @@ const Poe1ActGuide = ({ lang }) => {
                                 }
                                 const fallback =
                                     (raw && typeof raw === 'object' && raw.title?.rendered) ? raw.title.rendered :
-                                    (typeof raw === 'string' || typeof raw === 'number') ? String(raw) :
-                                    '#ITEM#';
+                                        (typeof raw === 'string' || typeof raw === 'number') ? String(raw) :
+                                            '#ITEM#';
                                 return <span key={`fallback-${index}`}>{fallback}</span>;
                             }
                             return part;
@@ -470,7 +470,7 @@ const Poe1ActGuide = ({ lang }) => {
                 ) : (
                     <div className="record-board-placeholder">
                         <h2 style={{ textAlign: 'center' }}>{t.recordBoard}</h2>
-                        <p style={{ text Align: 'center' }}>{t.noRecordsText}</p>
+                        <p style={{ textAlign: 'center' }}>{t.noRecordsText}</p>
                         {uiIcons.Speedrun_Example && (
                             <img src={uiIcons.Speedrun_Example} alt="Example Records Chart" style={{ maxWidth: '100%', borderRadius: '8px' }} />
                         )}
