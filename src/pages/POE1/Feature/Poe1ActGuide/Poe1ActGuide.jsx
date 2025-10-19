@@ -219,21 +219,42 @@ const Poe1ActGuide = ({ lang }) => {
                 const initialQuests = filteredSteps.map(step => ({ id: step.id, title: step.title.rendered, summaryTitle: step.acf.summary_title, details: step.content.rendered, noteItems: step.acf.note_items || [] }));
                 const allItemIds = new Set(initialQuests.flatMap(q => q.noteItems?.map(item => item.id).filter(Boolean)));
                 let enrichedItemsMap = new Map();
-                if (allItemIds.size > 0) {
-                    const itemIdsArray = Array.from(allItemIds);
-                    const itemsResponse = await fetch(`/wp-json/wp/v2/item?lang=${lang}&include=${itemIdsArray.join(',')}&per_page=100&_embed`, { signal });
-                    if (!itemsResponse.ok) throw new Error('아이템 상세 정보 로딩 실패');
-                    const enrichedItems = await itemsResponse.json();
-                    enrichedItems.forEach(item => {
-                        const finalItem = { ...item };
-                        if (item._embedded && item._embedded['wp:term']) {
-                            item._embedded['wp:term'].forEach(taxonomy => {
-                                if (taxonomy.length > 0) finalItem[taxonomy[0].taxonomy] = taxonomy;
-                            });
-                        }
-                        enrichedItemsMap.set(item.id, finalItem);
-                    });
+            if (allItemIds.size > 0) {
+                const itemIdsArray = Array.from(allItemIds);
+                let allEnrichedItems = [];
+
+                try {
+const itemsResponse = await fetch(`/wp-json/wp/v2/poe1_item?lang=${lang}&include=${itemIdsArray.join(',')}&per_page=100&_embed&acf_format=standard`, { signal });                    if (itemsResponse.ok) {
+                        const enrichedItems = await itemsResponse.json();
+                        allEnrichedItems = allEnrichedItems.concat(enrichedItems);
+                    } else {
+                        console.error('POE1 아이템 상세 정보 로딩 실패');
+                    }
+                } catch (e) {
+                    console.error('Fetching poe1_item failed', e);
                 }
+
+                try {
+const currencyResponse = await fetch(`/wp-json/wp/v2/poe1_currency?lang=${lang}&include=${itemIdsArray.join(',')}&per_page=100&_embed&acf_format=standard`, { signal });                    if (currencyResponse.ok) {
+                        const enrichedCurrency = await currencyResponse.json();
+                        allEnrichedItems = allEnrichedItems.concat(enrichedCurrency);
+                    } else {
+                        console.error('POE1 화폐 정보 로딩 실패');
+                    }
+                } catch (e) {
+                    console.error('Fetching poe1_currency failed', e);
+                }
+
+                allEnrichedItems.forEach(item => {
+                    const finalItem = { ...item };
+                    if (item._embedded && item._embedded['wp:term']) {
+                        item._embedded['wp:term'].forEach(taxonomy => {
+                            if (taxonomy.length > 0) finalItem[taxonomy[0].taxonomy] = taxonomy;
+                        });
+                    }
+                    enrichedItemsMap.set(item.id, finalItem);
+                });
+            }
                 const finalQuests = initialQuests.map(quest => ({ ...quest, noteItems: quest.noteItems.map(item => enrichedItemsMap.get(item.id) || item) }));
                 setQuests(finalQuests);
                 setClosedQuestIds([]);

@@ -63,24 +63,24 @@ const ItemTooltip = ({
     dividerUrl,
     headerHeightPx
   } = useMemo(() => {
-    const leftB   = normalizedRarityAcf?.header_left_image || null;
-    const midB    = normalizedRarityAcf?.header_middle_image || null;
-    const rightB  = normalizedRarityAcf?.header_right_image || null;
-    const divB    = normalizedRarityAcf?.divider || null;
+    const leftB = normalizedRarityAcf?.header_left_image || null;
+    const midB = normalizedRarityAcf?.header_middle_image || null;
+    const rightB = normalizedRarityAcf?.header_right_image || null;
+    const divB = normalizedRarityAcf?.divider || null;
     const heightB = normalizedRarityAcf?.header_height || null;
 
-    const acfA    = itemRarityFromItemRarity?.acf || null;
-    const leftA   = acfA?.header_left_image?.url || null;
-    const midA    = acfA?.header_middle_image?.url || null;
-    const rightA  = acfA?.header_right_image?.url || null;
-    const divA    = acfA?.divider?.url || null;
+    const acfA = itemRarityFromItemRarity?.acf || null;
+    const leftA = acfA?.header_left_image?.url || null;
+    const midA = acfA?.header_middle_image?.url || null;
+    const rightA = acfA?.header_right_image?.url || null;
+    const divA = acfA?.divider?.url || null;
     const heightA = acfA?.header_height || null;
 
     return {
-      headerLeftUrl:  leftB  ?? leftA,
-      headerMidUrl:   midB   ?? midA,
+      headerLeftUrl: leftB ?? leftA,
+      headerMidUrl: midB ?? midA,
       headerRightUrl: rightB ?? rightA,
-      dividerUrl:     divB   ?? divA,
+      dividerUrl: divB ?? divA,
       headerHeightPx: (heightB ?? heightA) ? `${heightB ?? heightA}px` : '40px',
     };
   }, [normalizedRarityAcf, itemRarityFromItemRarity]);
@@ -95,6 +95,7 @@ const ItemTooltip = ({
     const acfIcon =
       u(item?.acf?.item_icon) ||
       u(item?.acf?.inventory_icon) ||
+      u(item?.acf?.poe1_item_icon) ||
       null;
 
     const featured =
@@ -105,6 +106,47 @@ const ItemTooltip = ({
 
     return acfIcon || featured || featured2 || null;
   }, [item]);
+
+  const normalizePoe1Acf = (acf = {}) => {
+    const reqParts = [];
+    if (acf.req_level) reqParts.push('`yy:요구 레벨 ' + acf.req_level + '`');
+    if (acf.req_str) reqParts.push('`yy:요구 힘 ' + acf.req_str + '`');
+    if (acf.req_dex) reqParts.push('`yy:요구 민첩 ' + acf.req_dex + '`');
+    if (acf.req_int) reqParts.push('`yy:요구 지능 ' + acf.req_int + '`');
+    const requirements = reqParts.join('\n');
+
+    const baseParts = [];
+    if (acf.min_physical_damage || acf.max_physical_damage)
+      baseParts.push('`ww:물리 피해 '
+        + (acf.min_physical_damage ?? '?') + '–' + (acf.max_physical_damage ?? '?') + '`');
+    if (acf.critical_chance) baseParts.push('`ww:치명타 확률 ' + acf.critical_chance + '%`');
+    if (acf.attacks_per_second) baseParts.push('`ww:초당 공격 ' + acf.attacks_per_second + '`');
+    if (acf.range) baseParts.push('`ww:무기 범위 ' + acf.range + '`');
+    if (acf.armour) baseParts.push('`ww:방어도 ' + acf.armour + '`');
+    if (acf.evasion) baseParts.push('`ww:회피 ' + acf.evasion + '`');
+    if (acf.energy_shield) baseParts.push('`ww:에너지 보호막 ' + acf.energy_shield + '`');
+    const base_properties = baseParts.join('\n');
+
+    const implicit_mods = acf.fixed_property_text || '';
+    const explicit_mods = acf.explicit_mods || '';
+    const flavor_text = acf.flavor_text || '';
+
+    return {
+      tooltip_display_title: acf.tooltip_display_title || '',
+      base_properties, base_properties_style: acf.base_properties_style || 'ww',
+      requirements, requirements_style: acf.requirements_style || 'yy',
+      implicit_mods, implicit_mods_style: acf.implicit_mods_style || 'gg',
+      explicit_mods, explicit_mods_style: acf.explicit_mods_style || 'gg',
+      flavor_text, flavor_text_style: acf.flavor_text_style || 'oo',
+    };
+  };
+
+  const normalizedAcf = useMemo(() => {
+    if (!hasAcf) return null;
+    const looksPoe2 = !!(item?.acf?.base_properties || item?.acf?.implicit_mods || item?.acf?.explicit_mods || item?.acf?.flavor_text);
+    return looksPoe2 ? item.acf : normalizePoe1Acf(item.acf);
+  }, [hasAcf, item?.acf]);
+
 
   const handleKeywordMouseEnter = (e, keywordId) => {
     if (glossaryData && glossaryData[keywordId]) {
@@ -196,13 +238,13 @@ const ItemTooltip = ({
     });
   };
 
-  const allFields = useMemo(() => (hasAcf ? [
-    { id: 'base_properties', textContent: item.acf.base_properties,  defaultStyle: item.acf.base_properties_style },
-    { id: 'requirements',    textContent: item.acf.requirements,     defaultStyle: item.acf.requirements_style },
-    { id: 'implicit_mods',   textContent: item.acf.implicit_mods,    defaultStyle: item.acf.implicit_mods_style },
-    { id: 'explicit_mods',   textContent: item.acf.explicit_mods,    defaultStyle: item.acf.explicit_mods_style },
-    { id: 'flavor_text',     textContent: item.acf.flavor_text,      defaultStyle: item.acf.flavor_text_style },
-  ] : []), [hasAcf, item?.acf]);
+  const allFields = useMemo(() => (normalizedAcf ? [
+    { id: 'base_properties', textContent: normalizedAcf.base_properties, defaultStyle: normalizedAcf.base_properties_style || 'ww' },
+    { id: 'requirements', textContent: normalizedAcf.requirements, defaultStyle: normalizedAcf.requirements_style || 'yy' },
+    { id: 'implicit_mods', textContent: normalizedAcf.implicit_mods, defaultStyle: normalizedAcf.implicit_mods_style || 'gg' },
+    { id: 'explicit_mods', textContent: normalizedAcf.explicit_mods, defaultStyle: normalizedAcf.explicit_mods_style || 'gg' },
+    { id: 'flavor_text', textContent: normalizedAcf.flavor_text, defaultStyle: normalizedAcf.flavor_text_style || 'oo' },
+  ] : []), [normalizedAcf]);
 
   const visibleFields = useMemo(
     () => allFields.filter(f => typeof f.textContent === 'string' && f.textContent.trim() !== ''),
@@ -211,7 +253,7 @@ const ItemTooltip = ({
 
   const pinInfo = {
     ko: { pin: '[Alt] 키를 눌러 고정', unpin: '[Alt] 키를 눌러 고정 해제' },
-    en: { pin: 'Press [Alt] to pin',   unpin: 'Press [Alt] to unpin' }
+    en: { pin: 'Press [Alt] to pin', unpin: 'Press [Alt] to unpin' }
   };
 
   const TooltipPopup = hasItem ? (
@@ -227,13 +269,13 @@ const ItemTooltip = ({
       }}
     >
       <div className="tooltip-header" style={{
-        '--header-left-image':  headerLeftUrl  ? `url(${headerLeftUrl})`   : 'none',
-        '--header-bg-image':    headerMidUrl   ? `url(${headerMidUrl})`    : 'none',
-        '--header-right-image': headerRightUrl ? `url(${headerRightUrl})`  : 'none',
-        '--header-height':      headerHeightPx,
+        '--header-left-image': headerLeftUrl ? `url(${headerLeftUrl})` : 'none',
+        '--header-bg-image': headerMidUrl ? `url(${headerMidUrl})` : 'none',
+        '--header-right-image': headerRightUrl ? `url(${headerRightUrl})` : 'none',
+        '--header-height': headerHeightPx,
       }}>
         <h3 className="tooltip-title">
-          {parse((hasAcf && item.acf?.tooltip_display_title) || item?.title?.rendered || '')}
+          {parse((hasAcf && normalizedAcf.tooltip_display_title) || item?.title?.rendered || '')}
         </h3>
       </div>
 
@@ -279,7 +321,7 @@ const ItemTooltip = ({
           className="item-icon-inline"
         />
       )}
-      <span>{parse((hasAcf && item.acf?.tooltip_display_title) || item?.title?.rendered || '')}</span>
+      <span>{parse((hasAcf && normalizedAcf.tooltip_display_title) || item?.title?.rendered || '')}</span>
     </>
   );
 
