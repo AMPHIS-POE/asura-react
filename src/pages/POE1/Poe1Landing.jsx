@@ -7,6 +7,7 @@ import RegexGeneratorPage from './Feature/RegexGenerator/RegexGeneratorPage';
 import Poe1FansiteLinks from './Feature/FansiteLinks/Poe1FansiteLinks';
 import BaseItemTester from './Feature/Build/BaseItemTester';
 import ShippingCalculatorPage from './Feature/ShippingCalculator/ShippingCalculatorPage';
+import Poe1ActGuide from './Feature/Poe1ActGuide/Poe1ActGuide';
 
 
 
@@ -42,6 +43,7 @@ const Poe1Landing = ({ lang }) => {
           <Route path="links" element={<Poe1FansiteLinks lang={lang} />} />
           <Route path="build" element={<BaseItemTester />} />
           <Route path="shipping-calculator" element={<ShippingCalculatorPage lang={lang} />} />
+          <Route path="act-guide" element={<Poe1ActGuide lang={lang} />} />
 
 
 
