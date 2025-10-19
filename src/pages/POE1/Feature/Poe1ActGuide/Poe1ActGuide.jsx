@@ -196,66 +196,111 @@ const Poe1ActGuide = ({ lang }) => {
             return allData;
         }
 
+        const extractId = (n) => {
+            if (n == null) return null;
+            if (typeof n === 'number') return n;
+            if (typeof n === 'string') {
+                const parsed = Number(n);
+                return Number.isFinite(parsed) ? parsed : null;
+            }
+            if (typeof n === 'object' && n.id != null) {
+                const parsed = Number(n.id);
+                return Number.isFinite(parsed) ? parsed : null;
+            }
+            return null;
+        };
+
         async function fetchAllData() {
             showLoader();
             setError(null);
             try {
-                const guideStepsUrl = `/wp-json/wp/v2/poe1_guide_step?lang=${lang}&acf_format=standard&per_page=100&_embed`; 
+                const guideStepsUrl = `/wp-json/wp/v2/poe1_guide_step?lang=${lang}&acf_format=standard&per_page=100&_embed`;
                 const allStepsFromWP = await fetchAllPaginatedData(guideStepsUrl);
+
                 const glossaryResponse = await fetch(`/wp-json/wp/v2/glossary?lang=${lang}&per_page=100`, { signal });
                 if (!glossaryResponse.ok) throw new Error('용어 설명 데이터 로딩 실패');
                 const glossaryItems = await glossaryResponse.json();
                 const glossaryMap = glossaryItems.reduce((acc, item) => {
-                    acc[item.slug] = {
-                        title: item.title.rendered,
-                        content: item.content.rendered
-                    };
+                    acc[item.slug] = { title: item.title.rendered, content: item.content.rendered };
                     return acc;
                 }, {});
                 setGlossaryData(glossaryMap);
 
                 const filteredSteps = allStepsFromWP.filter(step => step.acf.act_number === currentAct && step.lang === lang);
                 filteredSteps.sort((a, b) => a.acf.step_order - b.acf.step_order);
-                const initialQuests = filteredSteps.map(step => ({ id: step.id, title: step.title.rendered, summaryTitle: step.acf.summary_title, details: step.content.rendered, noteItems: step.acf.note_items || [] }));
-                const allItemIds = new Set(initialQuests.flatMap(q => q.noteItems?.map(item => item.id).filter(Boolean)));
+
+                const initialQuests = filteredSteps.map(step => ({
+                    id: step.id,
+                    title: step.title.rendered,
+                    summaryTitle: step.acf.summary_title,
+                    details: step.content.rendered,
+                    noteItems: step.acf.note_items || []
+                }));
+
+                const allItemIds = new Set(
+                    initialQuests.flatMap(q =>
+                        (q.noteItems || [])
+                            .map(extractId)
+                            .filter(Boolean)
+                    )
+                );
+
                 let enrichedItemsMap = new Map();
-            if (allItemIds.size > 0) {
-                const itemIdsArray = Array.from(allItemIds);
-                let allEnrichedItems = [];
 
-                try {
-const itemsResponse = await fetch(`/wp-json/wp/v2/poe1_item?lang=${lang}&include=${itemIdsArray.join(',')}&per_page=100&_embed&acf_format=standard`, { signal });                    if (itemsResponse.ok) {
-                        const enrichedItems = await itemsResponse.json();
-                        allEnrichedItems = allEnrichedItems.concat(enrichedItems);
-                    } else {
-                        console.error('POE1 아이템 상세 정보 로딩 실패');
+                if (allItemIds.size > 0) {
+                    const itemIdsArray = Array.from(allItemIds);
+                    let allEnrichedItems = [];
+
+                    try {
+                        const itemsResponse = await fetch(
+                            `/wp-json/wp/v2/poe1_item?lang=${lang}&include=${itemIdsArray.join(',')}&per_page=100&_embed&acf_format=standard`,
+                            { signal }
+                        );
+                        if (itemsResponse.ok) {
+                            const enrichedItems = await itemsResponse.json();
+                            allEnrichedItems = allEnrichedItems.concat(enrichedItems);
+                        } else {
+                            console.error('POE1 아이템 상세 정보 로딩 실패');
+                        }
+                    } catch (e) {
+                        console.error('Fetching poe1_item failed', e);
                     }
-                } catch (e) {
-                    console.error('Fetching poe1_item failed', e);
+
+                    try {
+                        const currencyResponse = await fetch(
+                            `/wp-json/wp/v2/poe1_currency?lang=${lang}&include=${itemIdsArray.join(',')}&per_page=100&_embed&acf_format=standard`,
+                            { signal }
+                        );
+                        if (currencyResponse.ok) {
+                            const enrichedCurrency = await currencyResponse.json();
+                            allEnrichedItems = allEnrichedItems.concat(enrichedCurrency);
+                        } else {
+                            console.error('POE1 화폐 정보 로딩 실패');
+                        }
+                    } catch (e) {
+                        console.error('Fetching poe1_currency failed', e);
+                    }
+
+                    allEnrichedItems.forEach(item => {
+                        const finalItem = { ...item };
+                        if (item._embedded && item._embedded['wp:term']) {
+                            item._embedded['wp:term'].forEach(taxonomy => {
+                                if (taxonomy.length > 0) finalItem[taxonomy[0].taxonomy] = taxonomy;
+                            });
+                        }
+                        enrichedItemsMap.set(item.id, finalItem);
+                    });
                 }
 
-                try {
-const currencyResponse = await fetch(`/wp-json/wp/v2/poe1_currency?lang=${lang}&include=${itemIdsArray.join(',')}&per_page=100&_embed&acf_format=standard`, { signal });                    if (currencyResponse.ok) {
-                        const enrichedCurrency = await currencyResponse.json();
-                        allEnrichedItems = allEnrichedItems.concat(enrichedCurrency);
-                    } else {
-                        console.error('POE1 화폐 정보 로딩 실패');
-                    }
-                } catch (e) {
-                    console.error('Fetching poe1_currency failed', e);
-                }
+                const finalQuests = initialQuests.map(quest => ({
+                    ...quest,
+                    noteItems: (quest.noteItems || []).map(n => {
+                        const id = extractId(n);
+                        if (id != null && enrichedItemsMap.has(id)) return enrichedItemsMap.get(id);
+                        return n; // 객체면 원본 유지, 숫자/문자열이면 그대로 보존(렌더 시 안전장치)
+                    })
+                }));
 
-                allEnrichedItems.forEach(item => {
-                    const finalItem = { ...item };
-                    if (item._embedded && item._embedded['wp:term']) {
-                        item._embedded['wp:term'].forEach(taxonomy => {
-                            if (taxonomy.length > 0) finalItem[taxonomy[0].taxonomy] = taxonomy;
-                        });
-                    }
-                    enrichedItemsMap.set(item.id, finalItem);
-                });
-            }
-                const finalQuests = initialQuests.map(quest => ({ ...quest, noteItems: quest.noteItems.map(item => enrichedItemsMap.get(item.id) || item) }));
                 setQuests(finalQuests);
                 setClosedQuestIds([]);
 
@@ -294,13 +339,23 @@ const currencyResponse = await fetch(`/wp-json/wp/v2/poe1_currency?lang=${lang}&
             replace: domNode => {
                 if (domNode.type === 'text' && domNode.data.includes('#ITEM#')) {
                     const parts = domNode.data.split(/(#ITEM#)/g);
-                    return <>{parts.map((part, index) => {
-                        if (part === '#ITEM#' && itemIndex < itemsToRender.length) {
-                            const item = itemsToRender[itemIndex++];
-                            return <ItemTooltip key={`${item.id}-${index}`} item={item} glossaryData={glossaryData} currentLang={lang} />;
-                        }
-                        return part;
-                    })}</>;
+                    return <>
+                        {parts.map((part, index) => {
+                            if (part === '#ITEM#') {
+                                const raw = itemsToRender[itemIndex++];
+                                const itemObj = (raw && typeof raw === 'object' && raw.id) ? raw : null;
+                                if (itemObj) {
+                                    return <ItemTooltip key={`${itemObj.id}-${index}`} item={itemObj} glossaryData={glossaryData} currentLang={lang} />;
+                                }
+                                const fallback =
+                                    (raw && typeof raw === 'object' && raw.title?.rendered) ? raw.title.rendered :
+                                    (typeof raw === 'string' || typeof raw === 'number') ? String(raw) :
+                                    '#ITEM#';
+                                return <span key={`fallback-${index}`}>{fallback}</span>;
+                            }
+                            return part;
+                        })}
+                    </>;
                 }
             }
         };
@@ -415,7 +470,7 @@ const currencyResponse = await fetch(`/wp-json/wp/v2/poe1_currency?lang=${lang}&
                 ) : (
                     <div className="record-board-placeholder">
                         <h2 style={{ textAlign: 'center' }}>{t.recordBoard}</h2>
-                        <p style={{ textAlign: 'center' }}>{t.noRecordsText}</p>
+                        <p style={{ text Align: 'center' }}>{t.noRecordsText}</p>
                         {uiIcons.Speedrun_Example && (
                             <img src={uiIcons.Speedrun_Example} alt="Example Records Chart" style={{ maxWidth: '100%', borderRadius: '8px' }} />
                         )}
