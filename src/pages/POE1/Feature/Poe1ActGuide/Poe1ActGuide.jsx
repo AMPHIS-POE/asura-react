@@ -370,7 +370,7 @@ const Poe1ActGuide = ({ lang }) => {
 
                   return <span key={`fallback-${index}`}>{fallback}</span>;
                 }
-                return part; // 일반 텍스트는 그대로
+                return part; 
               })}
             </>
           );
@@ -383,7 +383,7 @@ const Poe1ActGuide = ({ lang }) => {
 
   const translations = {
     ko: {
-      mainTitle: 'Path of Exile <br />캠페인 스피드런 네비게이터',
+      mainTitle: 'Path of Exile <br />캠페인 네비게이터',
       timer: '타이머', start: '시작', stop: '중지', reset: '초기화',
       save: '기록 저장', checkRecords: '기록 확인', summaryTitle: '진행 요약',
       resetProgress: '진행도 초기화', detailsTitle: '상세 공략',
