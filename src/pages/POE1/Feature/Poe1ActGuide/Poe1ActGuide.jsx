@@ -400,7 +400,7 @@ const Poe1ActGuide = ({ lang }) => {
       promptMemo: '기록에 대한 메모를 남겨주세요 (선택 사항):', alertRecordSaved: '기록이 저장되었습니다.'
     },
     en: {
-      mainTitle: 'Path of Exile <br />Campaign Speedrun Navigator',
+      mainTitle: 'Path of Exile <br />Campaign Navigator',
       timer: 'Timer', start: 'Start', stop: 'Stop', reset: 'Reset',
       save: 'Save Record', checkRecords: 'Check Records', summaryTitle: 'Progress Summary',
       resetProgress: 'Reset Progress', detailsTitle: 'Detailed Guide',
