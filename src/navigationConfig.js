@@ -11,13 +11,12 @@ export const navigationData = {
         type: 'dropdown',
         id: 'tools',
         textKey: 'poe1_tools',
-        activeCheck: ['map', 'vorici', 'regex'],
+        activeCheck: ['map', 'vorici', 'regex', 'act-guide'],
         items: [
-          { path: '/poe1/map', textKey: 'poe1_mapCalculator', iconKey: 'abomination' },
-          { path: '/poe1/vorici', textKey: 'poe1_voriciCalculator', iconKey: 'chromatic' },
-          { path: '/poe1/regex', textKey: 'poe1_regexGenerator', iconKey: 'summit_map' },
-          { path: '/poe1/shipping-calculator', textKey: 'poe1_ShippingCalculator', iconKey: 'Kingsmarch_Ore_Bar' },
-          { path: '/poe1/act-guide', textKey: 'poe1_act_guide', iconKey: 'Portal_Icon' }
+          { path: '/poe1/vorici', textKey: 'poe1_voriciCalculator', iconKey: 'chromatic', cardImageKey: 'Chromatic_Calculator' },
+          { path: '/poe1/regex', textKey: 'poe1_regexGenerator', iconKey: 'summit_map', cardImageKey: 'regex_card' },
+          { path: '/poe1/shipping-calculator', textKey: 'poe1_ShippingCalculator', iconKey: 'Kingsmarch_Ore_Bar', cardImageKey: 'Kingsmarch_Nagivator' },
+          { path: '/poe1/act-guide', textKey: 'poe1_act_guide', iconKey: 'Portal_Icon', cardImageKey: 'Campaign_Navigator' }
         ]
       },
       { type: 'link', path: '/poe1/build/base-items', textKey: 'poe1_builds' },

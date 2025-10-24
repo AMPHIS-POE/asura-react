@@ -8,7 +8,8 @@ import Poe1FansiteLinks from './Feature/FansiteLinks/Poe1FansiteLinks';
 import BaseItemTester from './Feature/Build/BaseItemTester';
 import ShippingCalculatorPage from './Feature/ShippingCalculator/ShippingCalculatorPage';
 import Poe1ActGuide from './Feature/Poe1ActGuide/Poe1ActGuide';
-
+import Poe1Home from './Poe1Home';
+import './Poe1Home.css';
 
 
 
@@ -31,12 +32,12 @@ const Poe1Landing = ({ lang }) => {
 
       <div id="poe1-sub-content-container">
         <Routes>
+          {/* 2. index 라우트의 element를 <Poe1Home />으로 변경합니다. */}
           <Route index element={
-            <div className="tool-placeholder">
-              <h2>{t.welcome}</h2>
-              <p>{t.selectTool}</p>
-            </div>
+            <Poe1Home lang={lang} />
           } />
+          
+          {/* --- 나머지 라우트 --- */}
           <Route path="map" element={<MapCalculator lang={lang} />} />
           <Route path="vorici" element={<VoriciCalculator lang={lang} />} />
           <Route path="regex" element={<RegexGeneratorPage lang={lang} />} />
@@ -44,9 +45,6 @@ const Poe1Landing = ({ lang }) => {
           <Route path="build" element={<BaseItemTester />} />
           <Route path="shipping-calculator" element={<ShippingCalculatorPage lang={lang} />} />
           <Route path="act-guide" element={<Poe1ActGuide lang={lang} />} />
-
-
-
         </Routes>
       </div>
     </div>
