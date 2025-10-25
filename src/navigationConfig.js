@@ -32,8 +32,8 @@ export const navigationData = {
             textKey: 'poe1_keepersofflame'
           }
         ]
-      },
-      { type: 'link', path: '/poe1/links', textKey: 'poe1_fansiteLinks' }*/
+      },*/
+      { type: 'link', path: '/poe1/links', textKey: 'poe1_fansiteLinks' }
     ]
   },
 
