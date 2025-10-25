@@ -21,6 +21,7 @@ export const navigationData = {
       },
       { type: 'link', path: '/poe1/build/base-items', textKey: 'poe1_builds' },
 
+      /*
       {
         type: 'dropdown',
         id: 'starterBuilds',
@@ -36,6 +37,7 @@ export const navigationData = {
       { type: 'link', path: '/poe1/links', textKey: 'poe1_fansiteLinks' }
     ]
   },
+  */
 
   poe2: {
     bannerKey: 'banner_poe2',
