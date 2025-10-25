@@ -1,0 +1,21 @@
+.coming-soon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  text-align: center;
+  padding: 2rem;
+  color: var(--color-text-muted);
+}
+
+.coming-soon-container h1 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--color-accent-poe1);
+  margin-bottom: 1rem;
+}
+
+.coming-soon-container p {
+  font-size: 1.2rem;
+}

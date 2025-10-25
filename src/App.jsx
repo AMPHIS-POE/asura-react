@@ -8,7 +8,7 @@ import Poe1Landing from './pages/POE1/Poe1Landing';
 import Poe2Landing from './pages/POE2/Poe2Landing';
 import ContentGuidePage from './components/GuidePage/ContentGuidePage';
 import BackToTopButton from './components/BackToTopButton';
-import BaseItemTester from './pages/POE1/Feature/Build/BaseItemTester';
+import ComingSoonPage from './pages/POE1/Feature/Build/ComingSoonPage';
 import './App.css';
 
 const LoadingSpinner = () => {
@@ -34,8 +34,7 @@ function AppContent() {
             <Route path="/poe2/*" element={<Poe2Landing lang={lang} />} />
             <Route path="/poe1/guides/:slug" element={<ContentGuidePage lang={lang} />} />
             <Route path="/poe2/guides/:slug" element={<ContentGuidePage lang={lang} />} />
-            <Route path="/poe1/build/base-items"element={<BaseItemTester lang={lang} />}/>
-
+            <Route path="/poe1/build/base-items" element={<ComingSoonPage lang={lang} />} />
           </Routes>
         </main>
         <Footer lang={lang} />

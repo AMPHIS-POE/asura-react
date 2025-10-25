@@ -12,7 +12,6 @@ import Poe1Home from './Poe1Home';
 import './Poe1Home.css';
 
 
-
 const translations = {
   ko: {
     welcome: '아수라에 오신 것을 환영합니다',
@@ -32,12 +31,10 @@ const Poe1Landing = ({ lang }) => {
 
       <div id="poe1-sub-content-container">
         <Routes>
-          {/* 2. index 라우트의 element를 <Poe1Home />으로 변경합니다. */}
           <Route index element={
             <Poe1Home lang={lang} />
           } />
           
-          {/* --- 나머지 라우트 --- */}
           <Route path="map" element={<MapCalculator lang={lang} />} />
           <Route path="vorici" element={<VoriciCalculator lang={lang} />} />
           <Route path="regex" element={<RegexGeneratorPage lang={lang} />} />
