@@ -23,28 +23,54 @@ const Poe1ActGuide = ({ lang }) => {
   const [isRecordModalOpen, setIsRecordModalOpen] = useState(false);
   const [editingRecordId, setEditingRecordId] = useState(null);
   const [memoInput, setMemoInput] = useState('');
-  const [confirmState, setConfirmState] = useState({ isOpen: false, message: '', onConfirm: () => {}, onCancel: () => {} });
-  const [promptState, setPromptState] = useState({ isOpen: false, message: '', onConfirm: () => {}, onCancel: () => {} });
+  const [confirmState, setConfirmState] = useState({ isOpen: false, message: '', onConfirm: () => { }, onCancel: () => { } });
+  const [promptState, setPromptState] = useState({ isOpen: false, message: '', onConfirm: () => { }, onCancel: () => { } });
   const [glossaryData, setGlossaryData] = useState({});
   const [uiIcons, setUiIcons] = useState({});
   const [imageModalUrl, setImageModalUrl] = useState(null);
   const [isTimerAccordionOpen, setIsTimerAccordionOpen] = useState(false);
+  const detailsContentRef = useRef(null);
 
-  useEffect(() => {
-    const handleContentClick = (e) => {
-      const link = e.target.closest('a.image-popup-trigger');
-      if (link) {
-        e.preventDefault();
-        setImageModalUrl(link.href);
-      }
-    };
-    const contentArea = document.querySelector('.details-content-wrapper');
-    if (contentArea) contentArea.addEventListener('click', handleContentClick);
-    return () => {
-      if (contentArea) contentArea.removeEventListener('click', handleContentClick);
-    };
-  }, [quests]);
+// 이미지 클릭 모달을 위한 새롭고 안전한 useEffect
+useEffect(() => {
+  // 1. 1단계에서 만든 ref로부터 실제 HTML 요소를 가져옵니다.
+  const contentArea = detailsContentRef.current;
 
+  // 2. 요소가 없으면(로딩 중 등) 아무것도 하지 않습니다.
+  if (!contentArea) return;
+
+  // 3. 클릭 이벤트가 발생했을 때 실행될 함수
+  const handleContentClick = (e) => {
+
+    // 4. 클릭된 대상이 텍스트(글자)인지 확인합니다.
+    let targetElement = e.target;
+    if (!(targetElement instanceof Element)) {
+      // 텍스트(글자)를 클릭했다면, 그 부모 태그(<a>)를 대신 사용합니다.
+      targetElement = targetElement.parentElement;
+    }
+
+    // 5. 이제 안전하게 .closest()로 'a.image-popup-trigger' 링크를 찾습니다.
+    const link = targetElement?.closest('a.image-popup-trigger');
+
+    // 6. 링크를 찾았다면
+    if (link) {
+      e.preventDefault(); // 새 창 열기 (기본 동작)를 막습니다.
+      e.stopPropagation(); // (혹시 모를 다른 클릭 이벤트도 막습니다)
+      setImageModalUrl(link.getAttribute('href')); // 모달을 띄웁니다!
+    }
+  };
+
+  // 7. contentArea에 우리가 만든 똑똑한 클릭 핸들러를 등록합니다.
+  contentArea.addEventListener('click', handleContentClick);
+
+  // 8. 페이지가 닫힐 때 등록한 핸들러를 깨끗이 청소합니다.
+  return () => {
+    if (contentArea) {
+      contentArea.removeEventListener('click', handleContentClick);
+    }
+  };
+
+}, []); // <-- 9. 의존성 배열을 비워서, 이 코드가 딱 "한 번만" 실행되게 합니다.
   const askForConfirmation = (message) => {
     return new Promise((resolve) => {
       setConfirmState({
@@ -370,7 +396,7 @@ const Poe1ActGuide = ({ lang }) => {
 
                   return <span key={`fallback-${index}`}>{fallback}</span>;
                 }
-                return part; 
+                return part;
               })}
             </>
           );
@@ -496,7 +522,7 @@ const Poe1ActGuide = ({ lang }) => {
             ))}
           </div>
 
-          <div className="details-content-wrapper">
+          <div className="details-content-wrapper" ref={detailsContentRef}>            
             <h2>{t.detailsTitle}</h2>
             <div className="accordion-container">
               {quests.map(quest => {
