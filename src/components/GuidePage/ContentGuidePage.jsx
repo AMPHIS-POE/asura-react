@@ -5,6 +5,7 @@ import { useLoading } from '../../Context/LoadingContext';
 import Breadcrumbs from '../../components/BreadCrumbs/BreadCrumbs';
 import AuthorCard from '../../components/AuthorCard/AuthorCard';
 import ItemTooltip from '../../components/ItemToolTip/ItemToolTip';
+import ImageModal from '../../components/Modal/ImageModal';
 import './ContentGuidePage.css';
 
 const ContentGuidePage = ({ lang }) => {
@@ -14,6 +15,7 @@ const ContentGuidePage = ({ lang }) => {
     const { showLoader, hideLoader } = useLoading();
     const [post, setPost] = useState(null);
     const [enrichedItems, setEnrichedItems] = useState([]);
+    const [modalImageUrl, setModalImageUrl] = useState(null);
     const [tocItems, setTocItems] = useState([]);
     const [activeTocId, setActiveTocId] = useState('');
     const [error, setError] = useState(null);
@@ -171,6 +173,28 @@ const ContentGuidePage = ({ lang }) => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, [tocItems]);
 
+    useEffect(() => {
+        const handleContentClick = (e) => {
+            const triggerLink = e.target.closest('a.image-popup-trigger');
+            if (triggerLink) {
+                e.preventDefault();
+                const imageUrl = triggerLink.getAttribute('href');
+                setModalImageUrl(imageUrl);
+            }
+        };
+
+        const contentElement = contentRef.current;
+        if (contentElement) {
+            contentElement.addEventListener('click', handleContentClick);
+        }
+
+        return () => {
+            if (contentElement) {
+                contentElement.removeEventListener('click', handleContentClick);
+            }
+        };
+    }, [post]);
+
     const handleTocClick = (e, id) => {
         e.preventDefault();
         const element = document.getElementById(id);
@@ -253,6 +277,12 @@ const ContentGuidePage = ({ lang }) => {
                     {renderContentWithItems(post.content.rendered, enrichedItems)}
                 </main>
             </div>
+            {modalImageUrl && (
+                <ImageModal
+                    imageUrl={modalImageUrl}
+                    onClose={() => setModalImageUrl(null)}
+                />
+            )}
         </div>
     );
 };
