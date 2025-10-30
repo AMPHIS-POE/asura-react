@@ -31,46 +31,36 @@ const Poe1ActGuide = ({ lang }) => {
   const [isTimerAccordionOpen, setIsTimerAccordionOpen] = useState(false);
   const detailsContentRef = useRef(null);
 
-// 이미지 클릭 모달을 위한 새롭고 안전한 useEffect
 useEffect(() => {
-  // 1. 1단계에서 만든 ref로부터 실제 HTML 요소를 가져옵니다.
   const contentArea = detailsContentRef.current;
 
-  // 2. 요소가 없으면(로딩 중 등) 아무것도 하지 않습니다.
   if (!contentArea) return;
 
-  // 3. 클릭 이벤트가 발생했을 때 실행될 함수
   const handleContentClick = (e) => {
 
-    // 4. 클릭된 대상이 텍스트(글자)인지 확인합니다.
     let targetElement = e.target;
     if (!(targetElement instanceof Element)) {
-      // 텍스트(글자)를 클릭했다면, 그 부모 태그(<a>)를 대신 사용합니다.
       targetElement = targetElement.parentElement;
     }
 
-    // 5. 이제 안전하게 .closest()로 'a.image-popup-trigger' 링크를 찾습니다.
     const link = targetElement?.closest('a.image-popup-trigger');
 
-    // 6. 링크를 찾았다면
     if (link) {
-      e.preventDefault(); // 새 창 열기 (기본 동작)를 막습니다.
-      e.stopPropagation(); // (혹시 모를 다른 클릭 이벤트도 막습니다)
-      setImageModalUrl(link.getAttribute('href')); // 모달을 띄웁니다!
+      e.preventDefault(); 
+      e.stopPropagation(); 
+      setImageModalUrl(link.getAttribute('href')); 
     }
   };
 
-  // 7. contentArea에 우리가 만든 똑똑한 클릭 핸들러를 등록합니다.
   contentArea.addEventListener('click', handleContentClick);
 
-  // 8. 페이지가 닫힐 때 등록한 핸들러를 깨끗이 청소합니다.
   return () => {
     if (contentArea) {
       contentArea.removeEventListener('click', handleContentClick);
     }
   };
 
-}, []); // <-- 9. 의존성 배열을 비워서, 이 코드가 딱 "한 번만" 실행되게 합니다.
+}, []); 
   const askForConfirmation = (message) => {
     return new Promise((resolve) => {
       setConfirmState({
@@ -205,13 +195,11 @@ useEffect(() => {
       return allData;
     }
 
-    // note_items가 단일/배열/널 모두 들어올 수 있어 정규화
     const normalizeNoteItems = (val) => {
       if (!val) return [];
       return Array.isArray(val) ? val : [val];
     };
 
-    // id / ID / string / number 전부 지원
     const extractId = (n) => {
       if (n == null) return null;
       if (typeof n === 'number') return Number.isFinite(n) ? n : null;
@@ -231,11 +219,9 @@ useEffect(() => {
       showLoader();
       setError(null);
       try {
-        // 1) 가이드 스텝
         const guideStepsUrl = `/wp-json/wp/v2/poe1_guide_step?lang=${lang}&acf_format=standard&per_page=100&_embed`;
         const allStepsFromWP = await fetchAllPaginatedData(guideStepsUrl);
 
-        // 2) 용어 사전
         const glossaryResponse = await fetch(`/wp-json/wp/v2/glossary?lang=${lang}&per_page=100`, { signal });
         if (!glossaryResponse.ok) throw new Error('용어 설명 데이터 로딩 실패');
         const glossaryItems = await glossaryResponse.json();
@@ -245,20 +231,17 @@ useEffect(() => {
         }, {});
         setGlossaryData(glossaryMap);
 
-        // 3) 액트 필터 + 정렬
         const filteredSteps = allStepsFromWP.filter(step => step.acf.act_number === currentAct && step.lang === lang);
         filteredSteps.sort((a, b) => a.acf.step_order - b.acf.step_order);
 
-        // 4) 초안 퀘스트
         const initialQuests = filteredSteps.map(step => ({
           id: step.id,
           title: step.title.rendered,
           summaryTitle: step.acf.summary_title,
           details: step.content.rendered,
-          noteItems: normalizeNoteItems(step.acf.note_items) // ← 항상 배열 보장
+          noteItems: normalizeNoteItems(step.acf.note_items) 
         }));
 
-        // 5) 모든 아이템 ID 수집
         const allItemIds = new Set(
           initialQuests.flatMap(q =>
             (q.noteItems || [])
@@ -267,7 +250,6 @@ useEffect(() => {
           )
         );
 
-        // 6) 상세 데이터 요청 (item + currency)
         let enrichedItemsMap = new Map();
         if (allItemIds.size > 0) {
           const itemIdsArray = Array.from(allItemIds);
@@ -301,7 +283,6 @@ useEffect(() => {
             console.error('Fetching poe1_currency failed', e);
           }
 
-          // 분류/희귀도 택소노미를 상위로 편의 복사
           allEnrichedItems.forEach(item => {
             const finalItem = { ...item };
             if (item._embedded && item._embedded['wp:term']) {
@@ -313,13 +294,12 @@ useEffect(() => {
           });
         }
 
-        // 7) 최종 퀘스트(아이템 교체; 실패 시 원본 유지)
         const finalQuests = initialQuests.map(quest => ({
           ...quest,
           noteItems: (quest.noteItems || []).map(n => {
             const id = extractId(n);
             if (id != null && enrichedItemsMap.has(id)) return enrichedItemsMap.get(id);
-            return n; // 원본 유지(객체/ID 모두 허용)
+            return n; 
           })
         }));
 
@@ -354,11 +334,9 @@ useEffect(() => {
     setClosedQuestIds(idsToClose);
   };
 
-  // --- placeholder 렌더러 ---
   const renderDetailsWithTooltips = (quest, glossaryData) => {
     if (!quest.details) return null;
 
-    // 항상 배열로 보장
     const safeItems = Array.isArray(quest.noteItems) ? quest.noteItems : (quest.noteItems ? [quest.noteItems] : []);
     let itemIndex = 0;
 
@@ -370,7 +348,7 @@ useEffect(() => {
             <>
               {parts.map((part, index) => {
                 if (part === '#ITEM#') {
-                  const raw = safeItems[itemIndex++]; // 인덱스 초과 시 undefined
+                  const raw = safeItems[itemIndex++]; 
                   const itemObj = (raw && typeof raw === 'object' && (raw.id || raw.ID))
                     ? (raw.id ? raw : { ...raw, id: raw.ID })
                     : null;
@@ -386,7 +364,6 @@ useEffect(() => {
                     );
                   }
 
-                  // 치환 실패 시에도 공백이 아니라 "정보성 텍스트"가 남도록
                   const fallback =
                     (raw && typeof raw === 'object' && raw.title?.rendered)
                       ? raw.title.rendered
