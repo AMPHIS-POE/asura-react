@@ -31,7 +31,7 @@ const L10N = {
   },
 };
 
-const CURRENT_LEAGUE = 'Mercenaries';
+const CURRENT_LEAGUE = 'Keepers';
 const MIN_LISTING_COUNT = 10;
 const OUTLIER_MULTIPLIER = 4;
 
