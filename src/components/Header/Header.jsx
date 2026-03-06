@@ -37,7 +37,7 @@ const translations = {
     poe1_fansiteLinks: 'Fansite Links',
     poe1_buildsComingSoon: 'Builds page coming soon!',
     poe1_starterBuilds: 'Starter Build',
-    poe1_mirage: 'Mirage League',
+    poe1_mirage: 'mirage League',
     poe2_home: 'Home', poe2_guides: 'Guides', poe2_tools: 'Tools', poe2_act_guide: 'Campaign Navigator', poe2_contentGuides: 'Content Guides',
     poe2_beginnerGuides: 'Beginner Guides',
     poe2_comingSoon: 'Content coming soon.',
