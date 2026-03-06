@@ -28,8 +28,8 @@ export const navigationData = {
         activeCheck: ['starter-builds'],
         items: [
           {
-            path: '/poe1/guides/keepersofflame?type=poe1_starter_build',
-            textKey: 'poe1_keepersofflame'
+            path: '/poe1/guides/mirage?type=poe1_starter_build',
+            textKey: 'poe1_mirage'
           }
         ]
       },
